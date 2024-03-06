@@ -1,71 +1,86 @@
-.sideBar{
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    position: relative;
+.sideBar {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  position: relative;
 }
-.sideBar_Links{
-    display: flex;
-    flex-direction: column;
-    margin-top: 30px;
-    color: white;
+.sideBar_Links {
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+  color: white;
 }
-.sideBar_Links div{
-    display: flex;
-    align-items: center;
-    margin-bottom: 35px;
+.sideBar_Links div {
+  display: flex;
+  align-items: center;
+  margin-bottom: 35px;
 }
-.post{
-    width: 90%;
-    height: 40px;
-    border-radius: 20px;
-    border: none;
-    background-color: rgb(29, 155, 240);;
-    color: rgb(255, 255, 255);
-    font-size: 18px;
-    font-weight: 600;
-    cursor: pointer;
+.post {
+  width: 90%;
+  height: 40px;
+  border-radius: 20px;
+  border: none;
+  background-color: rgb(29, 155, 240);
+  color: rgb(255, 255, 255);
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
 }
 
-.account{
-    position: absolute;
-    bottom: 40px;
-    display: flex;
-    width: 90%;
-    justify-content: space-between;
-    align-items: center;
+.account {
+  position: absolute;
+  bottom: 40px;
+  display: flex;
+  width: 90%;
+  justify-content: space-between;
+  align-items: center;
 }
-.acc_info{
-    margin-left: 10px;
+.acc_info {
+  margin-left: 10px;
 }
-.acc_name{
-    font-size: 16px;
+.acc_name {
+  font-size: 16px;
 }
-.acc_email{
-    font-size: 14px;
-    color: rgb(110, 110, 110);
+.acc_email {
+  font-size: 14px;
+  color: rgb(110, 110, 110);
 }
 .ReactModal__Content {
-    background-color: black !important;
-    border-radius: 15px !important;
-    border: none !important;
-    width: 40% !important;
-    left: 30% !important;
-    height: 30% !important;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  background-color: black !important;
+  border-radius: 15px !important;
+  border: none !important;
+  width: 40% !important;
+  left: 30% !important;
+  height: 30% !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
-.ReactModal__Overlay{
-    background-color: #bebebe3b !important;
+.ReactModal__Overlay {
+  background-color: #bebebe3b !important;
 }
-.buttonPost{
-    width: 100px;
-    border: none;
-    background-color: blue;
-    border: none;
-    border-radius: 10px;
-    color: white;
-    height: 30px;
-    
+.buttonPost {
+  width: 100px;
+  border: none;
+  background-color: blue;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  height: 30px;
+}
+.positon {
+  position: fixed;
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: -50px;
+    width: 2px;
+    height: 100vh;
+    background-color: grey;
+  }
+}
+
+.mainPositon {
+  position: relative;
 }
