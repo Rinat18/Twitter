@@ -1,0 +1,279 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto+Condensed:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic);
+@import url(https://fonts.googleapis.com/css?family=Noto+Sans:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic);
+
+.profileNavbar {
+  border-bottom: 1px solid gray;
+  // .profileNavbar__name
+  &__name {
+    display: flex;
+    padding: 10px;
+    span {
+      font-family: Noto Sans;
+      color: aliceblue;
+      font-size: 25px;
+      font-weight: 700;
+    }
+  }
+}
+.profileNavbar-name {
+  // .profileNavbar-name__post
+  &__post {
+    margin-left: 30px;
+    p {
+      color: rgb(113, 118, 123);
+      margin: 0;
+      padding: 2px;
+    }
+  }
+}
+
+.profilePhoto {
+  background-color: #343639;
+  width: 100%;
+  height: 250px;
+  img {
+    width: 100%;
+    height: 250px;
+    overflow-clip-margin: content-box;
+    overflow: clip;
+  }
+}
+.profileTitle {
+  // .profileTitle__PhotoAvatar
+  color: #fff;
+  font-family: Noto Sans;
+
+  &__PhotoAvatar {
+    display: flex;
+    border-radius: 100px;
+    // justify-content: space-around;
+    justify-content: end;
+    img {
+      width: 173px;
+      height: 179px;
+      border-radius: 100px;
+      padding: 2px;
+      position: absolute;
+      left: 513px;
+      top: 244px;
+    }
+    p {
+      //   margin-left: 900px;
+      font-family: Roboto Condensed;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 150px;
+      border-radius: 25px;
+      font-weight: 600;
+      height: 46px;
+      border: 1px solid rgba(255, 255, 255, 0.39);
+      color: #fff;
+      cursor: pointer;
+    }
+  }
+
+  // .profileTitle__about
+
+  &__about {
+    padding: 40px;
+    margin-left: 30px;
+    p {
+      color: #c6cbd2a8;
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 19px;
+    }
+    h3 {
+      font-size: 25px;
+      font-weight: 700;
+      line-height: 24px;
+      margin: 5px;
+    }
+  }
+}
+.profileTitle-about {
+  // .profileTitle-about__data
+
+  &__data {
+    display: flex;
+    align-items: center;
+    span {
+      margin-left: 10px;
+      color: #c6cbd2a8;
+    }
+  }
+}
+.pofileTitle-about {
+  // .pofileTitle-about__followers
+
+  &__followers {
+    display: flex;
+    p:first-child {
+      margin-right: 15px;
+    }
+    p {
+      color: #c6cbd2a8;
+    }
+  }
+}
+
+.tweets {
+  // .tweets__travel
+  border-bottom: 1px solid rgba(128, 128, 128, 0.486);
+  padding-bottom: 10px;
+  &__travel {
+    display: flex;
+    justify-content: space-evenly;
+    color: #fff;
+  }
+}
+.tweets-travel {
+  // .tweets-travel__posts
+
+  &__posts {
+    text-align: center;
+    font-family: Noto Sans;
+
+    width: 50px;
+    height: 34px;
+    font-size: 20px;
+    span {
+      cursor: pointer;
+    }
+    &:hover {
+      background-color: #edf8f82a;
+    }
+    border-bottom: 3px solid rgb(29, 155, 240);
+  }
+
+  // .tweets-travel__repies
+
+  &__repies {
+    text-align: center;
+    font-family: Noto Sans;
+
+    width: 61px;
+    height: 34px;
+    font-size: 20px;
+    span {
+      cursor: pointer;
+    }
+    &:hover {
+      background-color: #edf8f82a;
+    }
+  }
+
+  // .tweets-travel__highlights
+
+  &__highlights {
+    text-align: center;
+    font-family: Noto Sans;
+
+    width: 98px;
+    height: 34px;
+    font-size: 20px;
+    span {
+      cursor: pointer;
+    }
+    &:hover {
+      background-color: #edf8f82a;
+    }
+  }
+
+  // .tweets-travel__articles
+
+  &__articles {
+    text-align: center;
+    font-family: Noto Sans;
+
+    width: 67px;
+    height: 34px;
+    font-size: 20px;
+    span {
+      cursor: pointer;
+    }
+    &:hover {
+      background-color: #edf8f82a;
+    }
+  }
+
+  // .tweets-travel__media
+
+  &__media {
+    text-align: center;
+    font-family: Noto Sans;
+
+    width: 50px;
+    height: 34px;
+    font-size: 20px;
+    span {
+      cursor: pointer;
+    }
+    &:hover {
+      background-color: #edf8f82a;
+    }
+  }
+
+  // .tweets-travel__likes
+
+  &__likes {
+    text-align: center;
+    font-family: Noto Sans;
+
+    width: 50px;
+    height: 34px;
+    font-size: 20px;
+    span {
+      cursor: pointer;
+    }
+    &:hover {
+      background-color: #edf8f82a;
+    }
+  }
+}
+
+.newsTemp {
+  width: 85%;
+  margin: 0 auto;
+  color: #fff;
+  margin-bottom: 25px;
+
+  span {
+    display: flex;
+  }
+  h2 {
+    color: #fff;
+    font-size: 30px;
+  }
+  // .newsTemp__users
+
+  &__users {
+    display: flex;
+  }
+}
+.newsTemp-users {
+  // .newsTemp-users__nickName
+
+  &__nickName {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 113px;
+    span:last-child {
+      color: #e4e6e870;
+      font-size: 18px;
+    }
+    span:first-child {
+      font-size: 23px;
+    }
+  }
+}
+.newsTemp__all {
+  cursor: pointer;
+  display: flex;
+  // justify-content: space-around;
+  #follow {
+    margin-left: 675px;
+  }
+}
