@@ -1,5 +1,10 @@
-@import url(https://fonts.googleapis.com/css?family=Noto+Sans:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic);
+@import url("https://fonts.googleapis.com/css?family=Noto+Sans:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic");
 
+.main {
+  width: 100%;
+  position: relative;
+  left: 42px;
+}
 .foryouAndFollowing {
   border-bottom: 1px solid rgba(255, 255, 255, 0.365);
   color: white;
@@ -7,6 +12,9 @@
   justify-content: space-around;
   padding: 20px;
   font-family: Noto Sans;
+  border-bottom: 1px solid gray;
+  border-right: 1px solid gray;
+  border-left: 1px solid gray;
 
   &__foryou {
     font-size: 20px;
@@ -29,6 +37,7 @@
   color: white;
   display: flex;
   border-bottom: 1px solid rgba(255, 255, 255, 0.365);
+  border: 1px solid gray;
 
   &__inputs {
     margin-left: 20px;
@@ -62,7 +71,7 @@
       font-size: 20px;
       color: #fff;
       background-color: rgb(29, 155, 240);
-      margin-left: 321px;
+      margin-left: 200px;
     }
   }
 }
@@ -74,6 +83,7 @@
   display: flex;
   flex-direction: column;
   border-bottom: 1px solid rgba(255, 255, 255, 0.365);
+  border: 1px solid gray;
 
   &__userInfo {
     display: flex;

@@ -17,7 +17,7 @@ import {
 
 export default function HomePage() {
   return (
-    <main>
+    <main className="main">
       <div className="foryouAndFollowing">
         <div className="foryouAndFollowing__foryou">
           <span>For you</span>
