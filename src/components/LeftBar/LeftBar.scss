@@ -1,0 +1,98 @@
+.rightBar {
+  color: #fff;
+  font-family: Noto Sans;
+
+  &__input {
+    padding: 20px 0 20px 0;
+    svg {
+      width: 25px;
+      height: 25px;
+      position: absolute;
+      top: 32px;
+      right: 366px;
+    }
+    input {
+      color: #fff;
+      width: 278px;
+      height: 48px;
+      background-color: #212327;
+      border: none;
+      border-radius: 40px;
+      font-size: 20px;
+
+      &::placeholder {
+        padding-left: 40px;
+      }
+    }
+  }
+
+  // .rightBar__recToFollow
+
+  &__recToFollow {
+    width: 300px;
+    height: 300px;
+    background-color: #16181c;
+    border-radius: 25px;
+
+    h3 {
+      font-size: 24px;
+      padding: 10px 0 5px 15px;
+      margin: 0;
+    }
+  }
+
+  // .rightBar__showMore
+
+  &__showMore {
+    span {
+      color: #1e88d0;
+      font-weight: 500;
+      padding: 10px 0 0 10px;
+      cursor: pointer;
+    }
+  }
+}
+.rightBar-recToFollow {
+  // .rightBar-recToFollow__users
+
+  &__users {
+    display: flex;
+    padding: 13px 0 15px 12px;
+  }
+
+  // .rightBar-recToFollow__follow
+
+  &__follow {
+    width: 69px;
+    height: 29px;
+    background-color: #fff;
+    border-radius: 20px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin-left: 100px;
+    span {
+      font-weight: 700;
+      color: black;
+    }
+  }
+}
+.rightBar-recToFollow-users {
+  // .rightBar-recToFollow-users__nickname
+
+  &__nickname {
+    display: flex;
+    flex-direction: column;
+    span:first-child {
+      font-size: 14px;
+    }
+    span:last-child {
+      font-size: 14px;
+      color: #ffffff50;
+    }
+  }
+}
+.aboutComp {
+}
