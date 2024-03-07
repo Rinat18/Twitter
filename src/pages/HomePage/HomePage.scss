@@ -1,7 +1,9 @@
 @import url("https://fonts.googleapis.com/css?family=Noto+Sans:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic");
 
 .main {
-  width: 70%;
+  width: 100%;
+  position: relative;
+  left: 42px;
 }
 .foryouAndFollowing {
   border-bottom: 1px solid rgba(255, 255, 255, 0.365);
@@ -10,6 +12,9 @@
   justify-content: space-around;
   padding: 20px;
   font-family: Noto Sans;
+  border-bottom: 1px solid gray;
+  border-right: 1px solid gray;
+  border-left: 1px solid gray;
 
   &__foryou {
     font-size: 20px;
@@ -32,6 +37,7 @@
   color: white;
   display: flex;
   border-bottom: 1px solid rgba(255, 255, 255, 0.365);
+  border: 1px solid gray;
 
   &__inputs {
     margin-left: 20px;
@@ -65,7 +71,7 @@
       font-size: 20px;
       color: #fff;
       background-color: rgb(29, 155, 240);
-      margin-left: 150px;
+      margin-left: 200px;
     }
   }
 }
@@ -77,11 +83,14 @@
   display: flex;
   flex-direction: column;
   border-bottom: 1px solid rgba(255, 255, 255, 0.365);
+  border: 1px solid gray;
 
   &__userInfo {
     display: flex;
     align-items: center;
+    justify-content: center;
     margin-bottom: 20px;
+    margin-right: 20px;
     p {
       font-size: 20px;
       font-weight: 500;
@@ -100,15 +109,16 @@
     width: 70%;
     height: 545px;
     background-color: #95919189;
+    margin: 0 auto;
   }
 
   // .usersPosts__comments
 
   &__comments {
-    margin-right: 140px;
-    margin-left: 40px;
     display: flex;
     align-items: center;
+    justify-content: center;
+
     color: #ffffff5f;
     cursor: pointer;
     svg {
@@ -118,7 +128,7 @@
   // .usersPosts__repost
 
   &__repost {
-    margin-right: 140px;
+    // margin-right: 140px;
     display: flex;
     align-items: center;
     color: #ffffff5f;
@@ -128,7 +138,7 @@
   // .usersPosts__like
 
   &__like {
-    margin-right: 140px;
+    // margin-right: 140px;
     display: flex;
     align-items: center;
     color: #ffffff5f;
@@ -138,7 +148,7 @@
   // .usersPosts__bookMarks
 
   &__bookMarks {
-    margin-right: 140px;
+    // margin-right: 140px;
     display: flex;
     align-items: center;
     color: #ffffff5f;
@@ -148,4 +158,12 @@
 .userPosts__containerComents {
   display: flex;
   margin-top: 20px;
+  // margin-left: 20px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.postest {
+  width: 100%;
+  margin: auto;
 }
