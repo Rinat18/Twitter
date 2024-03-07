@@ -1,10 +1,7 @@
-import React from 'react'
-import './LeftBar.scss'
+import React from "react";
 
-export default function LeftBar() {
-  return (
-    <div>
-      
-    </div>
-  )
-}
+const LeftBar = () => {
+  return <div></div>;
+};
+
+export default LeftBar;
