@@ -39,57 +39,59 @@ export default function HomePage() {
           </div>
         </div>
       </div>
-      <div className="usersPosts">
-        <div className="usersPosts__userInfo">
-          <Avatar />
-          <p>Aidar Bakytov</p>
-          <span>@bakytv_</span>
-          <MoreVert style={{ marginLeft: "40%" }} />
+      <div className="postest">
+        <div className="usersPosts">
+          <div className="usersPosts__userInfo">
+            <Avatar />
+            <p>Aidar Bakytov</p>
+            <span>@bakytv_</span>
+            <MoreVert style={{ marginLeft: "40%" }} />
+          </div>
+          <div className="usersPosts__post"></div>
+          <div className="userPosts__containerComents">
+            <div className="usersPosts__comments">
+              <MapsUgc />
+              <span>1</span>
+            </div>
+            <div className="usersPosts__repost">
+              <Loop />
+              <span>1</span>
+            </div>
+            <div className="usersPosts__like">
+              <Favorite />
+              <span>20</span>
+            </div>
+            <div className="usersPosts__bookMarks">
+              <TurnedIn />
+              <Upload />
+            </div>
+          </div>
         </div>
-        <div className="usersPosts__post"></div>
-        <div className="userPosts__containerComents">
-          <div className="usersPosts__comments">
-            <MapsUgc />
-            <span>1</span>
+        <div className="usersPosts">
+          <div className="usersPosts__userInfo">
+            <Avatar />
+            <p>Aidar Bakytov</p>
+            <span>@bakytv_</span>
+            <MoreVert style={{ marginLeft: "40%" }} />
           </div>
-          <div className="usersPosts__repost">
-            <Loop />
-            <span>1</span>
-          </div>
-          <div className="usersPosts__like">
-            <Favorite />
-            <span>20</span>
-          </div>
-          <div className="usersPosts__bookMarks">
-            <TurnedIn />
-            <Upload />
-          </div>
-        </div>
-      </div>
-      <div className="usersPosts">
-        <div className="usersPosts__userInfo">
-          <Avatar />
-          <p>Aidar Bakytov</p>
-          <span>@bakytv_</span>
-          <MoreVert style={{ marginLeft: "40%" }} />
-        </div>
-        <div className="usersPosts__post"></div>
-        <div className="userPosts__containerComents">
-          <div className="usersPosts__comments">
-            <MapsUgc />
-            <span>1</span>
-          </div>
-          <div className="usersPosts__repost">
-            <Loop />
-            <span>1</span>
-          </div>
-          <div className="usersPosts__like">
-            <Favorite />
-            <span>20</span>
-          </div>
-          <div className="usersPosts__bookMarks">
-            <TurnedIn />
-            <Upload />
+          <div className="usersPosts__post"></div>
+          <div className="userPosts__containerComents">
+            <div className="usersPosts__comments">
+              <MapsUgc />
+              <span>1</span>
+            </div>
+            <div className="usersPosts__repost">
+              <Loop />
+              <span>1</span>
+            </div>
+            <div className="usersPosts__like">
+              <Favorite />
+              <span>20</span>
+            </div>
+            <div className="usersPosts__bookMarks">
+              <TurnedIn />
+              <Upload />
+            </div>
           </div>
         </div>
       </div>

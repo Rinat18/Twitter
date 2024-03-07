@@ -62,7 +62,7 @@
       font-size: 20px;
       color: #fff;
       background-color: rgb(29, 155, 240);
-      margin-left: 400px;
+      margin-left: 321px;
     }
   }
 }
@@ -78,7 +78,9 @@
   &__userInfo {
     display: flex;
     align-items: center;
+    justify-content: center;
     margin-bottom: 20px;
+    margin-right: 20px;
     p {
       font-size: 20px;
       font-weight: 500;
@@ -97,15 +99,16 @@
     width: 70%;
     height: 545px;
     background-color: #95919189;
+    margin: 0 auto;
   }
 
   // .usersPosts__comments
 
   &__comments {
-    margin-right: 140px;
-    margin-left: 40px;
     display: flex;
     align-items: center;
+    justify-content: center;
+
     color: #ffffff5f;
     cursor: pointer;
     svg {
@@ -115,7 +118,7 @@
   // .usersPosts__repost
 
   &__repost {
-    margin-right: 140px;
+    // margin-right: 140px;
     display: flex;
     align-items: center;
     color: #ffffff5f;
@@ -125,7 +128,7 @@
   // .usersPosts__like
 
   &__like {
-    margin-right: 140px;
+    // margin-right: 140px;
     display: flex;
     align-items: center;
     color: #ffffff5f;
@@ -135,7 +138,7 @@
   // .usersPosts__bookMarks
 
   &__bookMarks {
-    margin-right: 140px;
+    // margin-right: 140px;
     display: flex;
     align-items: center;
     color: #ffffff5f;
@@ -145,4 +148,12 @@
 .userPosts__containerComents {
   display: flex;
   margin-top: 20px;
+  // margin-left: 20px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.postest {
+  width: 100%;
+  margin: auto;
 }
