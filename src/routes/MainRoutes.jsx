@@ -4,6 +4,9 @@ import HomePage from "../pages/HomePage/HomePage";
 import Profile from "../components/profile/Profile";
 import Login from "../components/auth/Login";
 import Registration from "../components/auth/Registration";
+import Explore from "../components/explore/Explore";
+import Notifications from "../components/notifications/Notifications";
+import Message from "../components/message/Message";
 
 export default function MainRoutes() {
   const PUBLIC_ROUTES = [
@@ -22,6 +25,18 @@ export default function MainRoutes() {
     {
       path: "/registration",
       element: <Registration />,
+    },
+    {
+      path: "/explore",
+      element: <Explore />,
+    },
+    {
+      path: "/notifications",
+      element: <Notifications />,
+    },
+    {
+      path: "/message",
+      element: <Message />,
     },
   ];
   return (

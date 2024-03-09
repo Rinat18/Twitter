@@ -26,6 +26,7 @@ export default function SideBar() {
       inputRef.current.focus();
     }
   }, [modalIsOpen]);
+
   return (
     <div className="positon">
       <div className="sideBar">
@@ -49,7 +50,10 @@ export default function SideBar() {
               </span>
             </div>
           </NavLink>
-          <div>
+          <div
+            style={{ cursor: "pointer" }}
+            onClick={() => naviagte("/explore")}
+          >
             <SearchIcon
               sx={{ color: "white", width: "40px", height: "40px" }}
             />
@@ -63,7 +67,10 @@ export default function SideBar() {
               Explore
             </span>
           </div>
-          <div>
+          <div
+            style={{ cursor: "pointer" }}
+            onClick={() => naviagte("/notifications")}
+          >
             <NotificationsIcon
               sx={{ color: "white", width: "40px", height: "40px" }}
             />
@@ -77,7 +84,10 @@ export default function SideBar() {
               Notifications
             </span>
           </div>
-          <div>
+          <div
+            style={{ cursor: "pointer" }}
+            onClick={() => naviagte("/message")}
+          >
             <MailOutlineIcon
               sx={{ color: "white", width: "40px", height: "40px" }}
             />
@@ -135,7 +145,7 @@ export default function SideBar() {
                   onClick={() => setModalIsOpen(false)}
                   sx={{ color: "white", cursor: "pointer" }}
                 />
-                <div style={{ color: "blue" }}>Drafts</div>
+                <div style={{ color: "#1d9cf0" }}>Drafts</div>
               </div>
               <div
                 style={{
@@ -180,9 +190,9 @@ export default function SideBar() {
               }}
             >
               <div>
-                <ImageIcon sx={{ color: "blue" }} />
-                <PlaceIcon sx={{ color: "blue" }} />
-                <DateRangeIcon sx={{ color: "blue" }} />
+                <ImageIcon sx={{ color: "#1d9cf0" }} />
+                <PlaceIcon sx={{ color: "#1d9cf0" }} />
+                <DateRangeIcon sx={{ color: "#1d9cf0" }} />
               </div>
               <div>
                 <button className="buttonPost">Post</button>
