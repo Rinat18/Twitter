@@ -1,5 +1,5 @@
-import React, { createContext, useReducer } from "react";
-import { ACTION } from "../helpers/const";
+import React, { createContext, useContext, useReducer } from "react";
+import { ACTION, API } from "../helpers/const";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 const postContext = createContext();
@@ -30,16 +30,29 @@ const PostContextProvider = ({ children }) => {
   // !Get
   const getPosts = async () => {
     try {
-      const { data } = await axios(`${API}/posts`, getConfig());
+      const { data } = await axios(
+        `${API}/product/product/`,
+        getConfig()
+      );
+      console.log(data);
       dispatch({
-        type: ACTION.GET_POSTS,
-        payload: data,
+        type: "GET_PRODUCTS",
+        payload: data.results,
       });
     } catch (error) {
       console.log(error);
     }
   };
-  const values = {};
+  getPosts()
+    //! CREATE
+    const createPost = async (newProduct) => {
+      try {
+        await axios.post(`${API}/product/product/`, newProduct, getConfig());
+      } catch (error) {
+        console.log(error);
+      }
+    };
+  const values = {createPost,};
   return <postContext.Provider value={values}>{children}</postContext.Provider>;
 };
 

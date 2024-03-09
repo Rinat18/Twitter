@@ -1,4 +1,4 @@
-const API = "http://34.125.39.164/";
+export const API = "http://34.125.39.164/api/v1";
 
 export const ACTION = {
   GET_POSTS: "GET_POST",

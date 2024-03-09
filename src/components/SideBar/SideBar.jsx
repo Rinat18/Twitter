@@ -15,17 +15,43 @@ import PlaceIcon from "@mui/icons-material/Place";
 import DateRangeIcon from "@mui/icons-material/DateRange";
 import { NavLink, useNavigate } from "react-router-dom";
 import { Person } from "@mui/icons-material";
+import { usePorduct } from "../../context/PostContextProvider";
 
 export default function SideBar() {
   const naviagte = useNavigate();
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const inputRef = useRef(null);
+  const [imageUrl, setImageUrl] = useState("");
+  const fileInputRef = useRef(null);
+  const { createPost } = usePorduct();
 
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    const imageUrl = URL.createObjectURL(file);
+    setImageUrl(imageUrl);
+  };
   useEffect(() => {
     if (modalIsOpen && inputRef.current) {
       inputRef.current.focus();
     }
   }, [modalIsOpen]);
+
+  // ! ADD POST
+
+  const [title, setTitle] = useState("");
+  const [category, setCategory] = useState(0);
+  const [subCategory, setSubCategory] = useState(0);
+  const [price, setPrice] = useState(0);
+  const [description, setDescription] = useState(imageUrl);
+  const handleCLick = () => {
+    const newProduct = new FormData();
+    newProduct.append("title", title);
+    newProduct.append("category", category);
+    newProduct.append("subCategory", subCategory);
+    newProduct.append("price", price);
+    newProduct.append("description", description);
+    createPost(newProduct);
+  };
 
   return (
     <div className="positon">
@@ -139,7 +165,9 @@ export default function SideBar() {
             isOpen={modalIsOpen}
             onRequestClose={() => setModalIsOpen(false)}
           >
-            <div>
+            <div
+              style={{ position: "relative", width: "100%", height: "100%" }}
+            >
               <div style={{ display: "flex", justifyContent: "space-between" }}>
                 <CloseIcon
                   onClick={() => setModalIsOpen(false)}
@@ -164,6 +192,7 @@ export default function SideBar() {
                   <input
                     placeholder="What is happening?"
                     ref={inputRef}
+                    onChange={(e) => setTitle(e.target.value)}
                     type="text"
                     style={{
                       width: "100%",
@@ -179,23 +208,39 @@ export default function SideBar() {
                     cols="30"
                     rows="10"
                   />
+                  {imageUrl && (
+                    <img className="inpChoose" src={imageUrl} alt="Uploaded" />
+                  )}
                 </div>
               </div>
-            </div>
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "space-between",
-                alignContent: "center",
-              }}
-            >
-              <div>
-                <ImageIcon sx={{ color: "#1d9cf0" }} />
-                <PlaceIcon sx={{ color: "#1d9cf0" }} />
-                <DateRangeIcon sx={{ color: "#1d9cf0" }} />
-              </div>
-              <div>
-                <button className="buttonPost">Post</button>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignContent: "center",
+                  position: "absolute",
+                  bottom: "0px",
+                  width: "100%",
+                }}
+              >
+                <div>
+                  <input
+                    type="file"
+                    accept="image/*"
+                    style={{ display: "none" }}
+                    ref={fileInputRef}
+                    onChange={handleFileChange}
+                  />
+                  <ImageIcon
+                    sx={{ color: "#1d9cf0", cursor: "pointer" }}
+                    onClick={() => fileInputRef.current.click()}
+                  />
+                  <PlaceIcon sx={{ color: "#1d9cf0" }} />
+                  <DateRangeIcon sx={{ color: "#1d9cf0" }} />
+                </div>
+                <div>
+                  <button onClick={handleCLick} className="buttonPost">Post</button>
+                </div>
               </div>
             </div>
           </Modal>

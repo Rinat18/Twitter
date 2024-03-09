@@ -51,7 +51,7 @@
   border: none !important;
   width: 40% !important;
   left: 30% !important;
-  height: 30% !important;
+  height: 60% !important;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -67,6 +67,7 @@
   border-radius: 10px;
   color: white;
   height: 30px;
+  cursor: pointer;
 }
 .positon {
   position: fixed;
@@ -83,4 +84,8 @@
 
 .mainPositon {
   position: relative;
+}
+
+.inpChoose{
+  width: 80%;
 }
