@@ -3,9 +3,11 @@ import MainRoutes from "./routes/MainRoutes";
 import SideBar from "./components/SideBar/SideBar";
 import LeftBar from "./components/LeftBar/LeftBar";
 import Login from "./components/auth/Login";
+import Registration from "./components/auth/Registration";
 
 export default function App() {
   return (
+
     <div
       style={{
         width: "100%",
@@ -29,10 +31,12 @@ export default function App() {
       <div>
         <LeftBar />
       </div>
+
     </div>
 
     // <div>
     //   <Login />
+      {/* <Registration /> */}
     // </div>
   );
 }
