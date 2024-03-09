@@ -1,0 +1,49 @@
+.notifications {
+  width: 90%;
+  margin: 0 auto;
+  color: #fff;
+  font-family: Noto Sans;
+
+  &__container {
+  }
+
+  // .notifications__notifaction
+
+  &__notifaction {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgba(128, 128, 128, 0.54);
+    border-left: none;
+    border-right: none;
+    width: 100%;
+    height: 82px;
+    span {
+      padding-left: 10px;
+    }
+  }
+}
+.notifactions-container {
+  // .notifactions-container__settings
+
+  &__settings {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 0 33px 0;
+    h2 {
+      font-size: 20px;
+    }
+  }
+
+  // .notifactions-container__choose
+
+  &__choose {
+    display: flex;
+    justify-content: space-around;
+    cursor: pointer;
+    span:first-child {
+      border-bottom: 3px solid #1d9cf0;
+      height: 30px;
+    }
+  }
+}
