@@ -3,6 +3,7 @@ import MainRoutes from "./routes/MainRoutes";
 import SideBar from "./components/SideBar/SideBar";
 import LeftBar from "./components/LeftBar/LeftBar";
 import Login from "./components/auth/Login";
+import Registration from "./components/auth/Registration";
 
 export default function App() {
   return (
@@ -33,6 +34,7 @@ export default function App() {
 
     <div>
       <Login />
+      {/* <Registration /> */}
     </div>
   );
 }

@@ -2,15 +2,132 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: Noto Sans;
 }
 .login-container {
   height: 100vh;
-  width: 100%;
+  //   width: 100%;
+  max-width: 1200px;
   display: flex;
+  margin: 0 auto;
+  //   justify-content: center;
+  align-items: center;
   &__left {
     width: 50%;
+    background-image: url("../../assets/img/Logo-login.svg");
+    background-repeat: no-repeat;
+    height: 450px;
   }
   &__right {
+    height: 100%;
     width: 50%;
+    background-color: #fff;
+    // display: flex;
+    &__form {
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      justify-content: center;
+    }
+    & h1 {
+      margin-top: 50px;
+      margin-bottom: 50px;
+      font-size: 60px;
+      font-weight: 800;
+    }
+    & p {
+      font-size: 30px;
+      font-weight: 800;
+      margin-bottom: 50px;
+    }
+  }
+}
+
+.signupButton {
+  display: inline-block;
+  border: none;
+  background-color: rgb(29, 155, 240);
+  text-decoration: none;
+  color: #fff;
+  cursor: pointer;
+  padding: 8px 16px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #1d9bf0;
+  }
+
+  .signupContent {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .signupText {
+    text-align: center;
+  }
+}
+.signupOr {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+
+  .signupOrItem {
+    flex: 1;
+    height: 1px;
+    background-color: #677582;
+  }
+
+  .signupOrText {
+    color: rgb(231, 233, 234);
+    margin: 0 10px;
+  }
+}
+// apple buttom
+.signupButton {
+  display: inline-block;
+  border: none;
+  cursor: pointer;
+  background-color: rgb(255, 255, 255);
+  border-color: rgb(51, 54, 57);
+
+  .signupButtonContent {
+    display: flex;
+    align-items: center;
+
+    .signupButtonIcon {
+      width: 24px;
+      height: 24px;
+      margin-right: 8px;
+      fill: rgb(15, 20, 25);
+    }
+
+    .signupButtonText {
+      color: rgb(15, 20, 25);
+      text-overflow: unset;
+    }
+  }
+}
+.signup-button {
+  width: 40%;
+  display: flex;
+  justify-content: center;
+  background-color: rgb(29, 155, 240);
+  color: white;
+  text-decoration: none;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgb(25, 130, 200);
+  }
+
+  .button-content {
+    display: inline-block;
+    white-space: nowrap;
   }
 }
