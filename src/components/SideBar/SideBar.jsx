@@ -16,6 +16,7 @@ import DateRangeIcon from "@mui/icons-material/DateRange";
 import { NavLink, useNavigate } from "react-router-dom";
 import { Person } from "@mui/icons-material";
 import { usePorduct } from "../../context/PostContextProvider";
+import { useAuth } from "../../context/AuthContextProvider";
 
 export default function SideBar() {
   const naviagte = useNavigate();
@@ -24,7 +25,8 @@ export default function SideBar() {
   const [imageUrl, setImageUrl] = useState("");
   const fileInputRef = useRef(null);
   const { createPost } = usePorduct();
-
+  const { user,checkAuth } = useAuth();
+  console.log(user);
   const handleFileChange = (event) => {
     const file = event.target.files[0];
     const imageUrl = URL.createObjectURL(file);
@@ -36,6 +38,11 @@ export default function SideBar() {
     }
   }, [modalIsOpen]);
 
+  useEffect(() => {
+    if (localStorage.getItem("tokens")) {
+      checkAuth();
+    }
+  }, [])
   // ! ADD POST
 
   const [title, setTitle] = useState("");
@@ -239,7 +246,9 @@ export default function SideBar() {
                   <DateRangeIcon sx={{ color: "#1d9cf0" }} />
                 </div>
                 <div>
-                  <button onClick={handleCLick} className="buttonPost">Post</button>
+                  <button onClick={handleCLick} className="buttonPost">
+                    Post
+                  </button>
                 </div>
               </div>
             </div>

@@ -43,7 +43,6 @@ const PostContextProvider = ({ children }) => {
       console.log(error);
     }
   };
-  getPosts()
     //! CREATE
     const createPost = async (newProduct) => {
       try {
@@ -52,7 +51,7 @@ const PostContextProvider = ({ children }) => {
         console.log(error);
       }
     };
-  const values = {createPost,};
+  const values = {createPost,getConfig};
   return <postContext.Provider value={values}>{children}</postContext.Provider>;
 };
 
