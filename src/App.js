@@ -10,25 +10,20 @@ export default function App() {
 
     <div
       style={{
-        width: "100%",
+        width: "80%",
+        margin: "0 auto",
         display: "flex",
         justifyContent: "center",
         height: "100vh",
       }}
     >
-      <div style={{ width: "55%", display: "flex" }}>
-        <div className="mainPositon" style={{ width: "18%" }}>
-          <SideBar />
-        </div>
-        <div
-          style={{
-            width: "80%",
-          }}
-        >
-          <MainRoutes />
-        </div>
+      <div className="adaptiv">
+        <SideBar />
       </div>
-      <div>
+      <div className="mainHomePage">
+        <MainRoutes />
+      </div>
+      <div className="leftBar">
         <LeftBar />
       </div>
 

@@ -1,6 +1,6 @@
 import React from "react";
 import "./LeftBar.scss";
-import { Search } from "@mui/icons-material";
+import { More, MoreHoriz, Search } from "@mui/icons-material";
 import { Avatar } from "@mui/material";
 
 export default function LeftBar() {
@@ -28,11 +28,7 @@ export default function LeftBar() {
                 <div class="trending-hashtag">#Kyrgyzstan</div>
               </div>
               <div class="trending-actions">
-                <button class="trending-more-button">
-                  <svg class="trending-more-icon" viewBox="0 0 24 24">
-                    <path d="M3 12c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2-2-.9-2-2zm9 2c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm7 0c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"></path>
-                  </svg>
-                </button>
+                <MoreHoriz />
               </div>
             </div>
             <div class="show-more-link">
