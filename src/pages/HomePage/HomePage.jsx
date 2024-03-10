@@ -27,14 +27,19 @@ export default function HomePage() {
         </div>
       </div>
       <div className="homePagePosts">
-        <Avatar sx={{ width: "50px", height: "50px", marginTop: "20px" }} />
+        <Avatar
+          className="avatar"
+          sx={{ width: "50px", height: "50px", marginTop: "20px" }}
+        />
         <div className="homePagePosts__inputs">
           <input placeholder="What is happening?!" type="text" />
           <div className="homePagePosts__icons">
-            <Image />
-            <GifBox />
-            <SentimentSatisfiedAlt sx={{ color: "white" }} />
-            <DateRange />
+            <div className="">
+              <Image />
+              <GifBox />
+              <SentimentSatisfiedAlt sx={{ color: "white" }} />
+              <DateRange />
+            </div>
             <button>Post</button>
           </div>
         </div>
@@ -42,7 +47,7 @@ export default function HomePage() {
       <div className="postest">
         <div className="usersPosts">
           <div className="usersPosts__userInfo">
-            <Avatar />
+            <Avatar className="avatar" />
             <p>Aidar Bakytov</p>
             <span>@bakytv_</span>
             <MoreVert style={{ marginLeft: "40%" }} />
@@ -69,7 +74,7 @@ export default function HomePage() {
         </div>
         <div className="usersPosts">
           <div className="usersPosts__userInfo">
-            <Avatar />
+            <Avatar className="avatar" />
             <p>Aidar Bakytov</p>
             <span>@bakytv_</span>
             <MoreVert style={{ marginLeft: "40%" }} />

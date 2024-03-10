@@ -32,6 +32,7 @@
     padding: 20px 0 33px 0;
     h2 {
       font-size: 20px;
+      padding-left: 10px;
     }
   }
 
@@ -45,5 +46,11 @@
       border-bottom: 3px solid #1d9cf0;
       height: 30px;
     }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .notifications {
+    width: 100%;
   }
 }

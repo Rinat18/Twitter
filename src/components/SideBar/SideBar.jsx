@@ -17,6 +17,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { Person } from "@mui/icons-material";
 import { usePorduct } from "../../context/PostContextProvider";
 import { useAuth } from "../../context/AuthContextProvider";
+import { AddCircle, Person } from "@mui/icons-material";
 
 export default function SideBar() {
   const naviagte = useNavigate();
@@ -168,6 +169,9 @@ export default function SideBar() {
           <button onClick={() => setModalIsOpen(true)} className="post">
             Post
           </button>
+          <div className="post2">
+            <AddCircle className="" onClick={() => setModalIsOpen(true)} />
+          </div>
           <Modal
             isOpen={modalIsOpen}
             onRequestClose={() => setModalIsOpen(false)}
@@ -272,7 +276,7 @@ export default function SideBar() {
               <div className="acc_email">@Rinat1111</div>
             </div>
           </div>
-          <div style={{ display: "flex" }}>
+          <div className="adap" style={{ display: "flex" }}>
             <MoreHorizIcon
               sx={{ color: "white", display: "flex", justifyContent: "end" }}
             />

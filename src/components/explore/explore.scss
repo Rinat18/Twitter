@@ -73,3 +73,16 @@
   &__trending {
   }
 }
+@media screen and (max-width: 768px) {
+  .explorePage {
+    width: 100%;
+  }
+  .explorePage__search {
+    input {
+      width: 603px;
+    }
+    svg:first-child {
+      left: 124px;
+    }
+  }
+}

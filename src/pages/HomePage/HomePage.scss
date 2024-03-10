@@ -1,20 +1,21 @@
 @import url("https://fonts.googleapis.com/css?family=Noto+Sans:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic");
 
 .main {
-  width: 100%;
+  width: 90%;
   position: relative;
-  left: 42px;
+
+  margin: 0 auto;
+  // left: 42px;
 }
 .foryouAndFollowing {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.365);
   color: white;
   display: flex;
   justify-content: space-around;
   padding: 20px;
   font-family: Noto Sans;
-  border-bottom: 1px solid gray;
+
   border-right: 1px solid gray;
-  border-left: 1px solid gray;
+  // border-left: 1px solid gray;
 
   &__foryou {
     font-size: 20px;
@@ -36,9 +37,9 @@
   padding: 10px 0 40px 40px;
   color: white;
   display: flex;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.365);
+  width: 100%;
   border: 1px solid gray;
-
+  border-left: none;
   &__inputs {
     margin-left: 20px;
     input {
@@ -56,11 +57,17 @@
   &__icons {
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    width: 100%;
+
+    .icons {
+      display: flex;
+    }
     svg {
       color: rgb(29, 155, 240);
       width: 30px;
       height: 25px;
-      margin-right: 30px;
+      // margin-right: 30px;
       cursor: pointer;
     }
     button {
@@ -71,7 +78,7 @@
       font-size: 20px;
       color: #fff;
       background-color: rgb(29, 155, 240);
-      margin-left: 200px;
+      // margin-left: 200px;
     }
   }
 }
@@ -82,8 +89,9 @@
   padding: 10px 0 20px 20px;
   display: flex;
   flex-direction: column;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.365);
+
   border: 1px solid gray;
+  border-left: none;
 
   &__userInfo {
     display: flex;
@@ -166,4 +174,87 @@
 .postest {
   width: 100%;
   margin: auto;
+}
+
+.adaptiv {
+  display: flex;
+  justify-content: center;
+  width: 200px;
+}
+.mainHomePage {
+  width: 70%;
+  margin: 0 auto;
+}
+.homePagePosts__icons {
+  width: 430px;
+}
+@media screen and (max-width: 1024px) {
+  .usersPosts__userInfo {
+    p {
+      font-size: 12px;
+    }
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+  .leftBar {
+    width: 25%;
+  }
+  // .mainHomePage {
+  //   width: 100%;
+  //   margin-left: 30px;
+  // }
+  .rightBar__input {
+    input {
+      // width: 50px !important;
+      height: 45px !important;
+    }
+  }
+  .rightBar__subscribePremium {
+    width: 300px !important;
+    h3 {
+      font-size: 19px !important;
+    }
+    p {
+      font-size: 15px !important;
+    }
+  }
+  .rightBar__recToFollow {
+    width: 300px !important;
+  }
+  .rightBar__input {
+    svg {
+      right: 273px !important;
+    }
+  }
+  .foryouAndFollowing__foryou {
+    span {
+      font-size: 15px;
+    }
+  }
+  .foryouAndFollowing__following {
+    span {
+      font-size: 15px;
+    }
+  }
+  .avatar {
+    width: 40px !important;
+    height: 40px !important;
+  }
+  .homePagePosts__icons {
+    width: 350px;
+    button {
+      width: 82px !important;
+      height: 30px !important;
+    }
+  }
+}
+@media screen and (max-width: 768px) {
+  .main {
+    width: 100%;
+  }
+  .homePagePosts__icons {
+    width: 300px;
+  }
 }
