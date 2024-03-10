@@ -1,6 +1,10 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto+Condensed:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic);
 @import url(https://fonts.googleapis.com/css?family=Noto+Sans:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic);
 
+.profileContainer {
+  width: 90%;
+  margin: 0 auto;
+}
 .profileNavbar {
   border-bottom: 1px solid gray;
   // .profileNavbar__name
@@ -49,8 +53,8 @@
     // justify-content: space-around;
     justify-content: end;
     img {
-      width: 173px;
-      height: 179px;
+      width: 149px;
+      height: 150px;
       border-radius: 100px;
       padding: 2px;
       position: absolute;
@@ -234,8 +238,9 @@
 }
 
 .newsTemp {
-  width: 85%;
+  width: 95%;
   margin: 0 auto;
+
   color: #fff;
   margin-bottom: 25px;
 
@@ -245,6 +250,7 @@
   h2 {
     color: #fff;
     font-size: 30px;
+    padding: 15px 0 30px 0;
   }
   // .newsTemp__users
 
@@ -272,8 +278,74 @@
 .newsTemp__all {
   cursor: pointer;
   display: flex;
-  // justify-content: space-around;
-  #follow {
-    margin-left: 475px;
+  justify-content: space-between;
+}
+
+@media screen and (max-width: 1024px) {
+  .profileTitle__PhotoAvatar {
+    img {
+      left: 131px;
+    }
+  }
+  .profileTitle-about__data {
+    margin-bottom: 5px;
+    span {
+      font-size: 15px;
+    }
+  }
+  .pofileTitle-about__followers {
+    p {
+      font-size: 15px;
+    }
+  }
+  .newsTemp {
+    h2 {
+      font-size: 24px;
+    }
+  }
+  .newsTemp-users__nickName {
+    span:first-child {
+      font-size: 19px !important;
+    }
+  }
+  .newsTemp-users__nickName {
+    width: 98px;
+  }
+  .profileNavbar__name {
+    svg {
+      width: 30px;
+      height: 32px;
+    }
+  }
+  .profileNavbar__name {
+    span {
+      font-size: 20px;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .tweets-travel__posts {
+    font-size: 15px;
+  }
+  .tweets-travel__repies {
+    font-size: 15px;
+  }
+  .tweets-travel__highlights {
+    font-size: 15px;
+  }
+  .tweets-travel__articles {
+    font-size: 15px;
+  }
+  .tweets-travel__media {
+    font-size: 15px;
+  }
+  .tweets-travel__likes {
+    font-size: 15px;
+  }
+  .profileTitle__PhotoAvatar {
+    img {
+      left: 96px;
+    }
   }
 }

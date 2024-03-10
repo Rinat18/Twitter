@@ -7,6 +7,7 @@
 .sideBar_Links {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   margin-top: 30px;
   color: white;
 }
@@ -70,17 +71,63 @@
 }
 .positon {
   position: fixed;
-  &::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: -39px;
-    width: 1px;
-    height: 100vh;
-    background-color: grey;
-  }
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid gray;
+  width: 14%;
+  padding: 30px;
 }
 
-.mainPositon {
-  position: relative;
+.post2 {
+  svg {
+    display: none;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .sideBar {
+    display: flex;
+    align-items: center;
+    span {
+      display: none;
+    }
+  }
+  .post {
+    display: none;
+  }
+  .post2 {
+    width: 48px;
+    height: 48px;
+    background-color: #1d9cf0;
+    border-radius: 40px;
+    display: flex;
+    justify-content: center;
+    svg {
+      display: block;
+    }
+  }
+  .positon {
+    width: 10%;
+    svg {
+      width: 30px;
+      height: 30px;
+    }
+  }
+  .adaptiv {
+    width: 79px;
+  }
+  .account {
+    .acc_info {
+      display: none !important;
+    }
+    .adap {
+      svg {
+        display: none;
+      }
+    }
+  }
+  .sideBar_Links div {
+    display: flex;
+    justify-content: center;
+  }
 }
