@@ -7,6 +7,7 @@ import Login from "./components/auth/Login";
 export default function App() {
   return (
     <div
+      className="appMain"
       style={{
         width: "80%",
         margin: "0 auto",
