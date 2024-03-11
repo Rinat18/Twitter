@@ -42,10 +42,10 @@ export default function MainRoutes() {
       element: <Login />,
     },
   ];
-
+  
   return (
     <Routes>
-      {NotUser.map((route) => (
+      {PUBLIC_ROUTES.map((route) => (
         <Route key={route.path} path={route.path} element={route.element} />
       ))}
     </Routes>

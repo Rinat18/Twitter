@@ -6,23 +6,20 @@ const Registration = ({ setModalWindow, setModalWindow2 }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
-  const [userName, setUserName] = useState("");
   const { registrate } = useAuth();
 
   const handleLogin = () => {
-    if (!email.trim() || !password.trim() || !passwordConfirm.trim() || !userName.trim()) {
+    if (!email.trim() || !password.trim() || !passwordConfirm.trim()) {
       alert("Заполните все поля");
     } else {
       const formData = new FormData();
       formData.append("email", email);
       formData.append("password", password);
       formData.append("password_confirm", passwordConfirm);
-      formData.append("username", userName);
-      registrate(formData, userName);
+      registrate(formData);
       setEmail('')
       setPassword('')
       setPasswordConfirm('')
-      setUserName('')
     }
   };
   return (
@@ -38,10 +35,6 @@ const Registration = ({ setModalWindow, setModalWindow2 }) => {
         <label>
           <span>Введите Адрес Электронной Почты</span>
           <input type="text" onChange={(e) => setEmail(e.target.value)} />
-        </label>
-        <label>
-          <span>Имя пользователся</span>
-          <input type="text" onChange={(e) => setUserName(e.target.value)} />
         </label>
         <label>
           <span>Введите пароль</span>

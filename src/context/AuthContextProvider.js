@@ -4,31 +4,24 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 const authContext = createContext();
 export const useAuth = () => useContext(authContext);
-const INIT_STATE = {
-  user: {},
-  existUser: {},
-};
-const reducer = (state = INIT_STATE, action) => {
-  switch (action.type) {
-    case ACTION.SUCCESS_REGISTER:
-      return { ...state, user: action.payload };
-    case ACTION.GET_ERROR_REGISTRATION:
-      return { ...state, existUser: action.payload };
-  }
-}; 
+
 const AuthContextProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(reducer, INIT_STATE);
-  const [currentUser, setCurrentUser] = useState(null);
-  useEffect(() => {
-    if(currentUser){
-      console.log(currentUser);
-      dispatch({
-        type: ACTION.SUCCESS_REGISTER,
-        payload: currentUser,
-      })
+  const INIT_STATE = {
+    user: {},
+    existUser: {},
+  };
+  const reducer = (state = INIT_STATE, action) => {
+    switch (action.type) {
+      case ACTION.SUCCESS_REGISTER:
+        return { ...state, user: action.payload };
+      case ACTION.GET_ERROR_REGISTRATION:
+        return { ...state, existUser: action.payload };
     }
-  },[currentUser])
+  }; 
+  const [state, dispatch] = useReducer(reducer, INIT_STATE);
+  const [currentUser, setCurrentUser] = useState("");
   const navigate = useNavigate();
+
   // !Registration
   const registrate = async (formaData) => {
     try {
@@ -61,16 +54,17 @@ const AuthContextProvider = ({ children }) => {
   };
 
   //   ! Login
-  const Login = async (formaData, email) => {
+  const Login = async (formaData, email, name) => {
     try {
       const {data} = await axios.post(`${API}/account/login/`, formaData);
         localStorage.setItem("tokens", JSON.stringify(data));
         localStorage.setItem("email", JSON.stringify(email));
+        localStorage.setItem("name", JSON.stringify(name));
         setCurrentUser(email);
         navigate("/");
       dispatch({
         type: ACTION.SUCCESS_REGISTER,
-        payload: data,
+        payload: email,
       });
     } catch (error) {
       console.log(error.response.data);
@@ -100,7 +94,16 @@ const AuthContextProvider = ({ children }) => {
         console.log(error);
       }
   };
-
+  const checkUser = async() => {
+    const check = JSON.parse(localStorage.getItem("tokens"))
+    const ussser = JSON.parse(localStorage.getItem("email"))
+    if(check){
+      dispatch({
+        type: ACTION.SUCCESS_REGISTER,
+        payload: ussser,  
+      });
+    }
+  }
   //   ! Logout
   const LogOut = async () => {
     try{
@@ -119,7 +122,10 @@ const AuthContextProvider = ({ children }) => {
     existUser: state.existUser,
     activateAccount,
     user: state.user,
-    Login,checkAuth,LogOut,
+    Login,
+    checkAuth,
+    currentUser,
+    checkUser,
   };
   return <authContext.Provider value={values}>{children}</authContext.Provider>;
 };

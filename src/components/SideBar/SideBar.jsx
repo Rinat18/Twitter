@@ -14,7 +14,6 @@ import ImageIcon from "@mui/icons-material/Image";
 import PlaceIcon from "@mui/icons-material/Place";
 import DateRangeIcon from "@mui/icons-material/DateRange";
 import { NavLink, useNavigate } from "react-router-dom";
-import { Person } from "@mui/icons-material";
 import { usePorduct } from "../../context/PostContextProvider";
 import { useAuth } from "../../context/AuthContextProvider";
 import { AddCircle, Person } from "@mui/icons-material";
@@ -26,7 +25,7 @@ export default function SideBar() {
   const [imageUrl, setImageUrl] = useState("");
   const fileInputRef = useRef(null);
   const { createPost } = usePorduct();
-  const { user,checkAuth } = useAuth();
+  const { user, checkAuth , checkUser} = useAuth();
   console.log(user);
   const handleFileChange = (event) => {
     const file = event.target.files[0];
@@ -42,10 +41,10 @@ export default function SideBar() {
   useEffect(() => {
     if (localStorage.getItem("tokens")) {
       checkAuth();
+      checkUser();
     }
-  }, [])
+  }, []);
   // ! ADD POST
-
   const [title, setTitle] = useState("");
   const [category, setCategory] = useState(0);
   const [subCategory, setSubCategory] = useState(0);
@@ -259,7 +258,7 @@ export default function SideBar() {
           </Modal>
         </div>
         <div className="account">
-          <div style={{ display: "flex", alignItems: "center" }}>
+          <div style={{ display: "flex" }}>
             <Avatar
               sx={{ border: "2px solid green" }}
               src="/static/images/avatar/2.jpg"
