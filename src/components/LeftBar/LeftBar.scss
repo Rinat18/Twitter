@@ -7,9 +7,12 @@
   color: #fff;
   font-family: Noto Sans;
   position: inherit;
-  width: 100%;
+  width: 20%;
   display: flex;
   justify-content: center;
+  position: fixed;
+  border-left: 1px solid #71777b;
+  height: 100vh;
   // margin-left: 50px;
   &__container{
     width: 90%;
@@ -104,7 +107,8 @@
 
   &__users {
     display: flex;
-    padding: 13px 0 15px 20px;
+    padding: 13px 20px 15px 20px;
+    justify-content: space-between;
   }
 
   // .rightBar-recToFollow__follow
@@ -119,7 +123,6 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    margin-left: 100px;
     span {
       font-weight: 700;
       color: black;

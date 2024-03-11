@@ -7,6 +7,8 @@ import {
   Search,
   Settings,
 } from "@mui/icons-material";
+import SideBar from "../../components/SideBar/SideBar";
+import LeftBar from "../../components/LeftBar/LeftBar";
 
 const Message = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -21,44 +23,54 @@ const Message = () => {
 
   return (
     <>
-      <div className="messagePage">
-        <div className="messagePage__container">
-          <div className="messagePage-container__messages">
-            <h3>Messages</h3>
-            <div className="">
-              <Settings />
-              <Mail />
+      <div className="messageComponent">
+        <div className="messageComponent__container">
+          <div className="Sidebar">
+            <SideBar />
+          </div>
+          <div className="messagePage">
+            <div className="messagePage__container">
+              <div className="messagePage-container__messages">
+                <h3>Messages</h3>
+                <div className="">
+                  <Settings />
+                  <Mail />
+                </div>
+              </div>
+              <div className="messagePage-container__welcomeText">
+                <h2>
+                  Welcome to your <br /> inbox !
+                </h2>
+                <span>
+                  Drop a line, share posts and more with private <br />{" "}
+                  conversations between you and others on X.{" "}
+                </span>
+                <button onClick={openModal}>Write a message</button>
+              </div>
             </div>
           </div>
-          <div className="messagePage-container__welcomeText">
-            <h2>
-              Welcome to your <br /> inbox !
-            </h2>
-            <span>
-              Drop a line, share posts and more with private <br />{" "}
-              conversations between you and others on X.{" "}
-            </span>
-            <button onClick={openModal}>Write a message</button>
+          {isModalOpen && (
+            <div className="modal-overlay">
+              <div className="modal">
+                <div className="modal__closend">
+                  <div className="modal-closed__message">
+                    <Close onClick={onClose} />
+                    <span>New Message</span>
+                  </div>
+                  <button>Next</button>
+                </div>
+                <div className="modal__search">
+                  <Search />
+                  <input placeholder="Search People" type="text" />
+                </div>
+              </div>
+            </div>
+          )}
+          <div className="leftBar">
+            <LeftBar />
           </div>
         </div>
       </div>
-      {isModalOpen && (
-        <div className="modal-overlay">
-          <div className="modal">
-            <div className="modal__closend">
-              <div className="modal-closed__message">
-                <Close onClick={onClose} />
-                <span>New Message</span>
-              </div>
-              <button>Next</button>
-            </div>
-            <div className="modal__search">
-              <Search />
-              <input placeholder="Search People" type="text" />
-            </div>
-          </div>
-        </div>
-      )}
     </>
   );
 };

@@ -44,6 +44,7 @@ export default function SideBar() {
       checkUser();
     }
   }, []);
+
   // ! ADD POST
   const [title, setTitle] = useState("");
   const [category, setCategory] = useState(0);
@@ -189,7 +190,8 @@ export default function SideBar() {
                 style={{
                   display: "flex",
                   marginTop: "20px",
-                  alignItems: "center",
+                  height: "440px",
+                  overflowY: "scroll",
                 }}
               >
                 <div style={{ width: "10%" }}>
@@ -212,6 +214,7 @@ export default function SideBar() {
                       fontSize: "18px",
                       outline: "none",
                       height: "40px",
+                      marginBottom: "20px",
                     }}
                     name=""
                     id=""
@@ -219,7 +222,13 @@ export default function SideBar() {
                     rows="10"
                   />
                   {imageUrl && (
-                    <img className="inpChoose" src={imageUrl} alt="Uploaded" />
+                    <div>
+                      <img
+                        className="inpChoose"
+                        src={imageUrl}
+                        alt="Uploaded"
+                      />
+                    </div>
                   )}
                 </div>
               </div>
@@ -228,8 +237,6 @@ export default function SideBar() {
                   display: "flex",
                   justifyContent: "space-between",
                   alignContent: "center",
-                  position: "absolute",
-                  bottom: "0px",
                   width: "100%",
                 }}
               >

@@ -33,7 +33,7 @@ export default function HomePage() {
               <span>Following</span>
             </div>
           </div>
-          <div className="homePagePosts">
+          {/* <div className="homePagePosts">
             <Avatar
               className="avatar"
               sx={{ width: "50px", height: "50px", marginTop: "20px" }}
@@ -50,13 +50,15 @@ export default function HomePage() {
                 <button>Post</button>
               </div>
             </div>
-          </div>
+          </div> */}
           <div className="postest">
             <div className="usersPosts">
               <div className="usersPosts__userInfo">
-                <Avatar className="avatar" />
-                <p>Aidar Bakytov</p>
-                <span>@bakytv_</span>
+                <div className="usersPosts__userInfo__inf">
+                  <Avatar className="avatar" />
+                  <p>Aidar Bakytov</p>
+                  <span>@bakytv_</span>
+                </div>
                 <MoreVert style={{ marginLeft: "40%" }} />
               </div>
               <div className="usersPosts__post"></div>
@@ -75,7 +77,6 @@ export default function HomePage() {
                 </div>
                 <div className="usersPosts__bookMarks">
                   <TurnedIn />
-                  <Upload />
                 </div>
               </div>
             </div>

@@ -2,7 +2,7 @@
 @import url(https://fonts.googleapis.com/css?family=Noto+Sans:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic);
 
 .profileContainer {
-  width: 90%;
+  width: 55.1%;
   margin: 0 auto;
 }
 .profileNavbar {
@@ -30,7 +30,15 @@
     }
   }
 }
-
+.profilePage{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  &__container{
+    width: 70%;
+    display: flex;
+  }
+}
 .profilePhoto {
   background-color: #343639;
   width: 100%;
@@ -50,16 +58,18 @@
   &__PhotoAvatar {
     display: flex;
     border-radius: 100px;
+    position: relative;
+    margin-top: 5px;
     // justify-content: space-around;
     justify-content: end;
-    img {
+    .MuiAvatar-root {
       width: 149px;
       height: 150px;
       border-radius: 100px;
       padding: 2px;
       position: absolute;
-      left: 404px;
-      top: 244px;
+      left: 20px;
+      top: -60px;
     }
     p {
       //   margin-left: 900px;
@@ -80,19 +90,19 @@
   // .profileTitle__about
 
   &__about {
-    padding: 40px;
-    margin-left: -14px;
+    padding: 50px 0 30px 30px ;
     p {
       color: #c6cbd2a8;
       font-size: 18px;
       font-weight: 400;
       line-height: 19px;
+      margin-top: 5px;
     }
     h3 {
       font-size: 25px;
       font-weight: 700;
       line-height: 24px;
-      margin: 5px;
+      margin-top: 5px;
     }
   }
 }
@@ -102,6 +112,8 @@
   &__data {
     display: flex;
     align-items: center;
+    margin-top: 5px;
+
     span {
       margin-left: 10px;
       color: #c6cbd2a8;
@@ -125,7 +137,6 @@
 .tweets {
   // .tweets__travel
   border-bottom: 1px solid rgba(128, 128, 128, 0.486);
-  padding-bottom: 10px;
   &__travel {
     display: flex;
     justify-content: space-evenly;

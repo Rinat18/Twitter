@@ -107,6 +107,7 @@ const AuthContextProvider = ({ children }) => {
   //   ! Logout
   const LogOut = async () => {
     try{
+      // await axios.post(`${API}/account/logout/`)
       localStorage.removeItem("tokens");
       localStorage.removeItem("email");
       setCurrentUser(null);
@@ -114,6 +115,16 @@ const AuthContextProvider = ({ children }) => {
       console.log(error);
     }
     
+  }
+  // LogOut()
+  // ! GET USER 
+
+  const getUser = async() => {
+    try{
+
+    }catch{
+
+    }
   }
 
 

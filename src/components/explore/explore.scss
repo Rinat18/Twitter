@@ -1,23 +1,28 @@
 .explorePage {
   color: #fff;
-  width: 90%;
-  margin: 0 auto;
+  width: 55.1%;
   font-family: Noto Sans;
-
+  &_container{
+    width: 95%;
+  }
   h3 {
     padding: 20px 0 30px 20px;
     font-size: 23px;
+    // border-bottom: 1px solid #71777b;
+
   }
   &__search {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    margin-top: 10px;
-
+    margin-top: 15px;
+    position: relative;
+    // border-bottom: 1px solid #71777b;
+    padding-bottom: 20px;
     svg:first-child {
       position: absolute;
-      left: 410px;
-      top: 22px;
+      left: 64px;
+      top: 12px;
       color: gray;
     }
     svg:last-child {
@@ -28,10 +33,10 @@
       background-color: #212327;
       border: none;
       border-radius: 22px;
-
+      padding-left: 40px;
+      font-size: 18px;
+      color: #fff;
       &::placeholder {
-        font-size: 18px;
-        padding-left: 40px;
       }
     }
   }
@@ -73,6 +78,27 @@
   &__trending {
   }
 }
+
+.exploreComponent{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.explore_container{
+  width: 70%;
+  display: flex;
+}
+
+.Sidebar{
+  width: 17%;
+  height: 100vh;
+}
+
+.leftBar{
+  width: 28%;
+  position: relative;
+}
+
 @media screen and (max-width: 768px) {
   .explorePage {
     width: 100%;

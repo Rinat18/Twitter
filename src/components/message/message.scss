@@ -1,5 +1,5 @@
 .messagePage {
-  width: 100%;
+  width: 55.1%;
   margin: 0 auto;
 
   &__container {
@@ -9,12 +9,25 @@
     font-family: Noto Sans;
   }
 }
+.messageComponent{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  &__container{
+    width: 70%;
+    display: flex;
+  }
+}
+
 .messagePage-container {
   // .messagePage-container__messages
 
   &__messages {
     display: flex;
     justify-content: space-between;
+    margin-top: 15px;
+    // border-bottom: 1px solid #71777b;
+
     h3 {
       font-size: 23px;
       font-weight: 600;
