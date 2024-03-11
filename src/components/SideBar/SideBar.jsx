@@ -25,7 +25,7 @@ export default function SideBar() {
   const [imageUrl, setImageUrl] = useState("");
   const fileInputRef = useRef(null);
   const { createPost } = usePorduct();
-  const { user, checkAuth , checkUser} = useAuth();
+  const { user, checkAuth, checkUser } = useAuth();
   console.log(user);
   const handleFileChange = (event) => {
     const file = event.target.files[0];
@@ -63,7 +63,7 @@ export default function SideBar() {
   return (
     <div className="positon">
       <div className="sideBar">
-        <XIcon sx={{ color: "white", marginTop: "30px" }} />
+        <XIcon sx={{ color: "white", marginTop: "20px" }} />
         <div className="sideBar_Links">
           <NavLink to={"/"}>
             <div>
