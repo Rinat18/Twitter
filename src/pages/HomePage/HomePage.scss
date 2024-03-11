@@ -276,3 +276,76 @@
     width: 300px;
   }
 }
+
+@media screen and (max-width: 425px) {
+  .appMain {
+    width: 100% !important;
+  }
+  // .sideBar {
+  //   display: flex;
+  //   flex-direction: column;
+  //   position: absolute;
+  // }
+  // .positon {
+  // }
+  .homePagePosts__icons {
+    width: 88%;
+    display: flex;
+    justify-content: start;
+  }
+  .homePagePosts {
+    padding: 5px;
+  }
+  .usersPosts__post {
+    height: 290px;
+  }
+  .notifications__notifaction span {
+    font-size: 13px;
+  }
+  .tweets-travel__repies span {
+    font-size: 12px;
+  }
+  .tweets-travel__posts span {
+    font-size: 12px;
+  }
+  .tweets-travel__highlights span {
+    font-size: 12px;
+  }
+  .tweets-travel__articles span {
+    font-size: 12px;
+  }
+  .tweets-travel__media span {
+    font-size: 12px;
+  }
+  .tweets-travel__likes span {
+    font-size: 12px;
+  }
+  .newsTemp h2 {
+    font-size: 22px !important;
+  }
+  .profileTitle__about {
+    padding: 40px 0px 30px 0 !important;
+  }
+  .profileTitle__PhotoAvatar img {
+    width: 130px !important;
+    height: 130px !important;
+  }
+  .profileTitle__PhotoAvatar p {
+    width: 100px;
+    height: 38px;
+    font-size: 13px;
+  }
+  .messagePage-container__welcomeText h2 {
+    font-size: 25px !important;
+  }
+  .messagePage-container__welcomeText {
+    margin: 55px 0 0 15px !important;
+  }
+  .messagePage-container__welcomeText button {
+  }
+  .profileTitle__PhotoAvatar {
+    img {
+      left: 104px;
+    }
+  }
+}
