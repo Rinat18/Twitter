@@ -6,10 +6,17 @@ const Registration = ({ setModalWindow, setModalWindow2 }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
-  const { registrate } = useAuth();
+  const [activateAcc, setActivateAcc] = useState("");
+  const [userName, setUserName] = useState("");
+  const { registrate, activateAccount } = useAuth();
 
   const handleLogin = () => {
-    if (!email.trim() || !password.trim() || !passwordConfirm.trim()) {
+    if (
+      !email.trim() ||
+      !password.trim() ||
+      !passwordConfirm.trim() ||
+      !userName.trim()
+    ) {
       alert("Заполните все поля");
     } else {
       const formData = new FormData();
@@ -17,10 +24,18 @@ const Registration = ({ setModalWindow, setModalWindow2 }) => {
       formData.append("password", password);
       formData.append("password_confirm", passwordConfirm);
       registrate(formData);
-      setEmail('')
-      setPassword('')
-      setPasswordConfirm('')
+      setUserName("");
+      setEmail("");
+      setPassword("");
+      setActivateAcc("");
     }
+  };
+  const activate = () => {
+    const formData = new FormData();
+    formData.append("activation_code", activateAcc);
+    formData.append("username", userName);
+
+    activateAccount(formData);
   };
   return (
     <div class="container">
@@ -37,6 +52,10 @@ const Registration = ({ setModalWindow, setModalWindow2 }) => {
           <input type="text" onChange={(e) => setEmail(e.target.value)} />
         </label>
         <label>
+          <span>Имя пользователся</span>
+          <input type="text" onChange={(e) => setUserName(e.target.value)} />
+        </label>
+        <label>
           <span>Введите пароль</span>
           <input
             type="password"
@@ -49,6 +68,15 @@ const Registration = ({ setModalWindow, setModalWindow2 }) => {
             type="password"
             onChange={(e) => setPasswordConfirm(e.target.value)}
           />
+        </label>
+
+        <label>
+          <span>Введите код которую отправили вам на почту</span>
+          <input
+            type="text"
+            onChange={(e) => setActivateAcc(e.target.value)}
+          />{" "}
+          <span onClick={() => activate()}>Activate</span>
         </label>
       </div>
       <div class="buttons">

@@ -5,8 +5,8 @@
   font-family: Noto Sans;
 }
 .login-container {
-  height: 100vh;
-  //   width: 100%;
+  // height: 100vh;
+  width: 100%;
   max-width: 1200px;
   display: flex;
   margin: 0 auto;
@@ -20,9 +20,10 @@
   }
   &__right {
     height: 100%;
-    width: 50%;
-    background-color: #fff;
-    // display: flex;
+    width: 60%;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
     &__form {
       display: flex;
       flex-direction: column;
@@ -30,15 +31,17 @@
       justify-content: center;
     }
     & h1 {
+      color: white;
       margin-top: 50px;
-      margin-bottom: 50px;
+      margin-bottom: 40px;
       font-size: 60px;
       font-weight: 800;
     }
     & p {
       font-size: 30px;
+      color: white;
       font-weight: 800;
-      margin-bottom: 50px;
+      margin-bottom: 20px;
     }
   }
 }
@@ -69,6 +72,7 @@
   }
 }
 .signupOr {
+  width: 60%;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -110,8 +114,8 @@
     }
   }
 }
-.signup-button {
-  width: 40%;
+.registrate-button {
+  width: 60%;
   display: flex;
   justify-content: center;
   background-color: rgb(29, 155, 240);
@@ -121,6 +125,7 @@
   border: none;
   border-radius: 30px;
   cursor: pointer;
+  margin-bottom: 5px;
 
   &:hover {
     background-color: rgb(25, 130, 200);
@@ -130,4 +135,55 @@
     display: inline-block;
     white-space: nowrap;
   }
+}
+.poilitics {
+  font-size: 11px !important;
+  margin-bottom: 45px;
+  color: white;
+  span {
+    color: #1d9bf0;
+    cursor: pointer;
+  }
+}
+.reg-titel {
+  font-size: 18px;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 15px;
+}
+.sign-in-bitton {
+  width: 60%;
+  border: 1px solid #fff;
+  border-radius: 30px;
+  background-color: transparent;
+  padding: 7px;
+  font-size: 18px;
+  font-weight: 700;
+
+  color: rgb(29, 155, 240);
+  cursor: pointer;
+}
+.footer {
+  margin-bottom: 0px;
+}
+
+.footer-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.footer-link {
+  text-decoration: none;
+  color: rgb(113, 118, 123);
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+.footer-link:hover {
+  text-decoration: underline;
+}
+
+.copyright {
+  color: rgb(113, 118, 123);
 }

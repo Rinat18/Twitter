@@ -6,49 +6,25 @@ import { useNavigate } from "react-router-dom";
 const LoginModal = ({ setModalWindow, setModalWindow2 }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { Login, activateAccount } = useAuth();
-  const [activateAcc, setActivateAcc] = useState("");
-  const [userName, setUserName] = useState("");
+  const { Login } = useAuth();
 
   const navigate = useNavigate();
 
   const handleLogin = () => {
-    if (!email.trim() || !password.trim() || !userName.trim()) {
+    if (!email.trim() || !password.trim()) {
       return;
     }
     const formData = new FormData();
     formData.append("email", email);
     formData.append("password", password);
 
-    Login(formData, email, userName);
+    Login(formData, email);
     navigate("/");
-    setUserName("");
     setEmail("");
     setPassword("");
-    setActivateAcc("");
   };
-  const activate = () => {
-    const formData = new FormData();
-    formData.append("activation_code", activateAcc);
-    formData.append("username", userName);
 
-    activateAccount(formData);
-  
-  };
   return (
-    // <div className="login-modal">
-    //   <input
-    //     type="email"
-    //     placeholder="email"
-    //     onChange={(e) => setEmail(e.target.value)}
-    //   />
-    //   <input
-    //     type="text"
-    //     placeholder="password"
-    //     onChange={(e) => setPassword(e.target.value)}
-    //   />
-    //   <button onClick={() => handleLogin()}>Login</button>
-    // </div>
     <div class="container">
       <span className="close" onClick={() => setModalWindow(false)}>
         &times;
@@ -100,7 +76,9 @@ const LoginModal = ({ setModalWindow, setModalWindow2 }) => {
         <span>Войти с учетной записью Apple</span>
       </div>
       <div class="signupOr">
+        <div class="signupOrItem"></div>
         <div class="signupOrText">или</div>
+        <div class="signupOrItem"></div>
       </div>
 
       <div class="login-form">
@@ -110,19 +88,10 @@ const LoginModal = ({ setModalWindow, setModalWindow2 }) => {
         </label>
         <label>
           <span>Введите пароль</span>
-          <input type="text" onChange={(e) => setPassword(e.target.value)} />
-        </label>
-        <label>
-          <span>Имя пользователся</span>
-          <input type="text" onChange={(e) => setUserName(e.target.value)} />
-        </label>
-        <label>
-          <span>Введите код которую отправили вам на почту</span>
           <input
-            type="text"
-            onChange={(e) => setActivateAcc(e.target.value)}
-          />{" "}
-          <span onClick={() => activate()}>Activate</span>
+            type="password"
+            onChange={(e) => setPassword(e.target.value)}
+          />
         </label>
       </div>
       <div class="buttons">
