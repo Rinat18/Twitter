@@ -43,30 +43,36 @@ export default function LeftBar() {
           <div className="rightBar__recToFollow">
             <h3>Who to follow</h3>
             <div className="rightBar-recToFollow__users">
-              <Avatar />
-              <div className="rightBar-recToFollow-users__nickname">
-                <span>Mr.Beast</span>
-                <span>@MrBeast</span>
+              <div style={{ display: "flex" }}>
+                <Avatar />
+                <div className="rightBar-recToFollow-users__nickname">
+                  <span>Mr.Beast</span>
+                  <span>@MrBeast</span>
+                </div>
               </div>
               <div className="rightBar-recToFollow__follow">
                 <span>Follow</span>
               </div>
             </div>
             <div className="rightBar-recToFollow__users">
-              <Avatar />
-              <div className="rightBar-recToFollow-users__nickname">
-                <span>Mr.Beast</span>
-                <span>@MrBeast</span>
+              <div style={{ display: "flex" }}>
+                <Avatar />
+                <div className="rightBar-recToFollow-users__nickname">
+                  <span>Mr.Beast</span>
+                  <span>@MrBeast</span>
+                </div>
               </div>
               <div className="rightBar-recToFollow__follow">
                 <span>Follow</span>
               </div>
             </div>
             <div className="rightBar-recToFollow__users">
-              <Avatar />
-              <div className="rightBar-recToFollow-users__nickname">
-                <span>Mr.Beast</span>
-                <span>@MrBeast</span>
+              <div style={{ display: "flex" }}>
+                <Avatar />
+                <div className="rightBar-recToFollow-users__nickname">
+                  <span>Mr.Beast</span>
+                  <span>@MrBeast</span>
+                </div>
               </div>
               <div className="rightBar-recToFollow__follow">
                 <span>Follow</span>

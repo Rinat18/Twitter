@@ -37,17 +37,23 @@ export default function MainRoutes() {
       path: "/message",
       element: <Message />,
     },
+  ];
+
+  const NOT_ROUTES = [
     {
-      path: "/login",
+      path: "/",
       element: <Login />,
     },
   ];
-  
   return (
     <Routes>
-      {PUBLIC_ROUTES.map((route) => (
-        <Route key={route.path} path={route.path} element={route.element} />
-      ))}
+      {user.length > 1
+        ? PUBLIC_ROUTES.map((route) => (
+            <Route key={route.path} path={route.path} element={route.element} />
+          ))
+        : NOT_ROUTES.map((route) => (
+            <Route key={route.path} path={route.path} element={route.element} />
+          ))}
     </Routes>
   );
 }
