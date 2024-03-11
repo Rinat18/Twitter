@@ -1,11 +1,8 @@
 @import url("https://fonts.googleapis.com/css?family=Noto+Sans:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic");
 
 .main {
-  width: 90%;
+  width: 55%;
   position: relative;
-
-  margin: 0 auto;
-  // left: 42px;
 }
 .foryouAndFollowing {
   color: white;
@@ -32,9 +29,29 @@
   }
 }
 
+.HomePage{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.HomePage__container{
+  width: 70%;
+  display: flex;
+}
+
+.Sidebar{
+  width: 17%;
+  height: 100vh;
+}
+
+.leftBar{
+  width: 28%;
+}
+
 .homePagePosts {
   // .homePagePosts__inputs
-  padding: 10px 0 40px 40px;
+  padding: 10px 40px 40px 40px;
   color: white;
   display: flex;
   width: 100%;
@@ -42,6 +59,7 @@
   border-left: none;
   &__inputs {
     margin-left: 20px;
+    width: 100%;
     input {
       width: 232px;
       height: 82px;
@@ -186,7 +204,7 @@
   margin: 0 auto;
 }
 .homePagePosts__icons {
-  width: 430px;
+  width: 100%;
 }
 @media screen and (max-width: 1024px) {
   .usersPosts__userInfo {

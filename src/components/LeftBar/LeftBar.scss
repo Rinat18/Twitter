@@ -7,45 +7,52 @@
   color: #fff;
   font-family: Noto Sans;
   position: inherit;
+  width: 100%;
+  display: flex;
+  justify-content: center;
   // margin-left: 50px;
-
+  &__container{
+    width: 90%;
+  }
   &__input {
     padding: 20px 0 20px 0;
+    position: relative;
     svg {
       width: 25px;
       height: 25px;
       position: absolute;
+      z-index: 1;
       top: 32px;
-      right: 530px;
+      left: 10px;
     }
     input {
       color: #fff;
-      width: 278px;
+      width: 100%;
       height: 48px;
       background-color: #212327;
       border: none;
       border-radius: 40px;
       font-size: 20px;
-
-      &::placeholder {
+      position: relative;
         padding-left: 40px;
-      }
+      
     }
   }
   // .rightBar__subscribePremium
 
   &__subscribePremium {
-    width: 400px;
+    width: 100%;
     height: 170px;
     background-color: #16181c;
     border-radius: 25px;
     margin-bottom: 20px;
     h3 {
-      font-size: 24px;
-      padding: 10px 0 5px 15px;
+      font-size: 18px;
+      padding: 20px 0 5px 15px;
       margin: 0;
     }
     p {
+      font-size: 15px;
       padding: 5px 0 5px 15px;
     }
     button {
@@ -68,14 +75,14 @@
   // .rightBar__recToFollow
 
   &__recToFollow {
-    width: 400px;
+    width: 100%;
     height: 300px;
     background-color: #16181c;
     border-radius: 25px;
 
     h3 {
-      font-size: 24px;
-      padding: 10px 0 5px 15px;
+      font-size: 18px;
+      padding: 20px 0 5px 20px;
       margin: 0;
     }
   }
@@ -86,17 +93,18 @@
     span {
       color: #1e88d0;
       font-weight: 500;
-      padding: 10px 0 0 10px;
+      padding: 20px 0 0 20px;
       cursor: pointer;
     }
   }
+ 
 }
 .rightBar-recToFollow {
   // .rightBar-recToFollow__users
 
   &__users {
     display: flex;
-    padding: 13px 0 15px 12px;
+    padding: 13px 0 15px 20px;
   }
 
   // .rightBar-recToFollow__follow
@@ -117,6 +125,7 @@
       color: black;
     }
   }
+
 }
 .rightBar-recToFollow-users {
   // .rightBar-recToFollow-users__nickname
@@ -124,6 +133,7 @@
   &__nickname {
     display: flex;
     flex-direction: column;
+    padding-left: 10px;
     span:first-child {
       font-size: 14px;
     }
@@ -148,9 +158,9 @@
 }
 
 .trending-header {
-  font-size: 24px;
+  font-size: 21px;
   margin-bottom: 10px;
-  padding: 20px;
+  padding: 15px 0  0 15px;
 }
 
 .trending-content {
@@ -163,7 +173,7 @@
 .trending-item {
   display: flex;
   align-items: center;
-  width: 100%;
+  width: 90%;
   justify-content: space-between;
   transition: background-color 0.3s ease;
 }
