@@ -26,6 +26,7 @@ const Registration = ({ setModalWindow, setModalWindow2 }) => {
       formData.append("username", userName);
       formData.append("password", password);
       formData.append("password_confirm", passwordConfirm);
+      formData.append("username", userName);
       registrate(formData);
       setUserName("");
       setEmail("");

@@ -36,6 +36,8 @@ const AuthContextProvider = ({ children }) => {
         type: ACTION.SUCCESS_REGISTER,
         payload: res.data,
       });
+      localStorage.setItem('userRegistration', JSON.stringify(res.data))
+      alert("вам на почту отправили код для аквации!")
     } catch (error) {
       console.log(error);
       dispatch({
@@ -47,9 +49,10 @@ const AuthContextProvider = ({ children }) => {
   // ! activate Account
   const activateAccount = async (formaData, userName) => {
     try {
-      const { data } = await axios.post(`${API}/account/activate/`, formaData);
-      localStorage.setItem("userName", JSON.stringify(userName));
-      console.log(data);
+
+      const {data} = await axios.post(`${API}/account/activate/`, formaData);
+      localStorage.setItem("userName", JSON.stringify(userName))
+      alert("Ваш аккаунт успешно активирован можете войти в аккаунт!")
     } catch (error) {
       dispatch({
         type: ACTION.GET_ERROR_REGISTRATION,
@@ -99,10 +102,12 @@ const AuthContextProvider = ({ children }) => {
       console.log(error);
     }
   };
-  const checkUser = async () => {
-    const check = JSON.parse(localStorage.getItem("tokens"));
-    const ussser = JSON.parse(localStorage.getItem("email"));
-    if (check) {
+
+
+  const checkUser = async() => {
+    const check = JSON.parse(localStorage.getItem("tokens"))
+    const ussser = JSON.parse(localStorage.getItem("email"))
+    if(check){
       dispatch({
         type: ACTION.SUCCESS_REGISTER,
         payload: ussser,
@@ -111,14 +116,29 @@ const AuthContextProvider = ({ children }) => {
   };
   //   ! Logout
   const LogOut = async () => {
-    try {
+
+    try{
+      // await axios.post(`${API}/account/logout/`)
       localStorage.removeItem("tokens");
       localStorage.removeItem("email");
       setCurrentUser(null);
     } catch (error) {
       console.log(error);
     }
-  };
+
+    
+  }
+  // LogOut()
+  // ! GET USER 
+
+  const getUser = async() => {
+    try{
+
+    }catch{
+
+    }
+  }
+
 
   const values = {
     registrate,

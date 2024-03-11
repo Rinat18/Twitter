@@ -1,11 +1,8 @@
 @import url("https://fonts.googleapis.com/css?family=Noto+Sans:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic");
 
 .main {
-  width: 90%;
+  width: 55.1%;
   position: relative;
-
-  margin: 0 auto;
-  // left: 42px;
 }
 .foryouAndFollowing {
   color: white;
@@ -32,9 +29,30 @@
   }
 }
 
+.HomePage{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.HomePage__container{
+  width: 70%;
+  display: flex;
+}
+
+.Sidebar{
+  width: 17%;
+  height: 100vh;
+}
+
+.leftBar{
+  width: 28%;
+  position: relative;
+}
+
 .homePagePosts {
   // .homePagePosts__inputs
-  padding: 10px 0 40px 40px;
+  padding: 10px 40px 40px 40px;
   color: white;
   display: flex;
   width: 100%;
@@ -42,6 +60,7 @@
   border-left: none;
   &__inputs {
     margin-left: 20px;
+    width: 100%;
     input {
       width: 232px;
       height: 82px;
@@ -86,7 +105,7 @@
 .usersPosts {
   color: #fff;
   // .usersPosts__userInfo
-  padding: 10px 0 20px 20px;
+  padding: 10px 20px 20px 20px;
   display: flex;
   flex-direction: column;
 
@@ -96,25 +115,29 @@
   &__userInfo {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     margin-bottom: 20px;
-    margin-right: 20px;
-    p {
-      font-size: 20px;
-      font-weight: 500;
-      font-family: Noto Sans;
-      margin: 0;
+    &__inf{
+      display: flex;
+      align-items: center;
+      p {
+        font-size: 20px;
+        font-weight: 500;
+        font-family: Noto Sans;
+        margin-left: 5px;
+      }
+      span {
+        color: #ffffff80;
+        margin-left: 10px;
+      }
     }
-    span {
-      color: #ffffff80;
-      margin-left: 10px;
-    }
+  
   }
 
   // .usersPosts__post
 
   &__post {
-    width: 70%;
+    width: 100%;
     height: 545px;
     background-color: #95919189;
     margin: 0 auto;
@@ -186,7 +209,7 @@
   margin: 0 auto;
 }
 .homePagePosts__icons {
-  width: 430px;
+  width: 100%;
 }
 @media screen and (max-width: 1024px) {
   .usersPosts__userInfo {
@@ -256,5 +279,78 @@
   }
   .homePagePosts__icons {
     width: 300px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .appMain {
+    width: 100% !important;
+  }
+  // .sideBar {
+  //   display: flex;
+  //   flex-direction: column;
+  //   position: absolute;
+  // }
+  // .positon {
+  // }
+  .homePagePosts__icons {
+    width: 88%;
+    display: flex;
+    justify-content: start;
+  }
+  .homePagePosts {
+    padding: 5px;
+  }
+  .usersPosts__post {
+    height: 290px;
+  }
+  .notifications__notifaction span {
+    font-size: 13px;
+  }
+  .tweets-travel__repies span {
+    font-size: 12px;
+  }
+  .tweets-travel__posts span {
+    font-size: 12px;
+  }
+  .tweets-travel__highlights span {
+    font-size: 12px;
+  }
+  .tweets-travel__articles span {
+    font-size: 12px;
+  }
+  .tweets-travel__media span {
+    font-size: 12px;
+  }
+  .tweets-travel__likes span {
+    font-size: 12px;
+  }
+  .newsTemp h2 {
+    font-size: 22px !important;
+  }
+  .profileTitle__about {
+    padding: 40px 0px 30px 0 !important;
+  }
+  .profileTitle__PhotoAvatar img {
+    width: 130px !important;
+    height: 130px !important;
+  }
+  .profileTitle__PhotoAvatar p {
+    width: 100px;
+    height: 38px;
+    font-size: 13px;
+  }
+  .messagePage-container__welcomeText h2 {
+    font-size: 25px !important;
+  }
+  .messagePage-container__welcomeText {
+    margin: 55px 0 0 15px !important;
+  }
+  .messagePage-container__welcomeText button {
+  }
+  .profileTitle__PhotoAvatar {
+    img {
+      left: 104px;
+    }
   }
 }

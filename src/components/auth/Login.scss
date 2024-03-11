@@ -166,10 +166,18 @@
 .footer {
   font-size: 13px;
   margin-bottom: 0px;
+
   padding: 20px 13px;
+
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
 }
 
 .footer-nav {
+  width: 80%;
+
   display: flex;
   flex-wrap: wrap;
   justify-content: center;

@@ -1,5 +1,5 @@
 .notifications {
-  width: 90%;
+  width: 55.1%;
   margin: 0 auto;
   color: #fff;
   font-family: Noto Sans;
@@ -29,7 +29,7 @@
   &__settings {
     display: flex;
     justify-content: space-between;
-    padding: 20px 0 33px 0;
+    padding: 20px 30px 33px 20px;
     h2 {
       font-size: 20px;
       padding-left: 10px;
@@ -47,6 +47,16 @@
       height: 30px;
     }
   }
+}
+
+.notificationPage{
+  width: 100%;
+  justify-content: center;
+  display: flex;
+}
+.notificationPage__container{
+  width: 70%;
+  display: flex;
 }
 
 @media screen and (max-width: 768px) {

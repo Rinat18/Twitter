@@ -42,7 +42,6 @@ export default function MainRoutes() {
       element: <Login />,
     },
   ];
-  
   return (
     <Routes>
       {PUBLIC_ROUTES.map((route) => (
