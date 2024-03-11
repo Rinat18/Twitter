@@ -1,21 +1,39 @@
 import React, { useState } from "react";
 import "./LoginModal.scss";
 import { useAuth } from "../../context/AuthContextProvider";
+import { useNavigate } from "react-router-dom";
 
 const LoginModal = ({ setModalWindow, setModalWindow2 }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { Login } = useAuth();
+  const { Login, activateAccount } = useAuth();
+  const [activateAcc, setActivateAcc] = useState("");
+  const [userName, setUserName] = useState("");
+
+  const navigate = useNavigate();
 
   const handleLogin = () => {
-    if (!email.trim() || !password.trim()) {
+    if (!email.trim() || !password.trim() || !userName.trim()) {
       return;
     }
     const formData = new FormData();
     formData.append("email", email);
     formData.append("password", password);
 
-    Login(formData);
+    Login(formData, email, userName);
+    navigate("/");
+    setUserName("");
+    setEmail("");
+    setPassword("");
+    setActivateAcc("");
+  };
+  const activate = () => {
+    const formData = new FormData();
+    formData.append("activation_code", activateAcc);
+    formData.append("username", userName);
+
+    activateAccount(formData);
+  
   };
   return (
     // <div className="login-modal">
@@ -93,6 +111,18 @@ const LoginModal = ({ setModalWindow, setModalWindow2 }) => {
         <label>
           <span>Введите пароль</span>
           <input type="text" onChange={(e) => setPassword(e.target.value)} />
+        </label>
+        <label>
+          <span>Имя пользователся</span>
+          <input type="text" onChange={(e) => setUserName(e.target.value)} />
+        </label>
+        <label>
+          <span>Введите код которую отправили вам на почту</span>
+          <input
+            type="text"
+            onChange={(e) => setActivateAcc(e.target.value)}
+          />{" "}
+          <span onClick={() => activate()}>Activate</span>
         </label>
       </div>
       <div class="buttons">
