@@ -30,6 +30,8 @@ const AuthContextProvider = ({ children }) => {
         type: ACTION.SUCCESS_REGISTER,
         payload: res.data,  
       });
+      localStorage.setItem('userRegistration', JSON.stringify(res.data))
+      alert("вам на почту отправили код для аквации!")
     } catch (error) {
       console.log(error);
       dispatch({
@@ -43,9 +45,8 @@ const AuthContextProvider = ({ children }) => {
     try {
       const {data} = await axios.post(`${API}/account/activate/`, formaData);
       localStorage.setItem("userName", JSON.stringify(userName))
-      console.log(data);
+      alert("Ваш аккаунт успешно активирован можете войти в аккаунт!")
     } catch (error) {
-      console.log(error.response.data.email[0]);
       dispatch({
         type: ACTION.GET_ERROR_REGISTRATION,
         payload: error.response.data,
@@ -94,6 +95,7 @@ const AuthContextProvider = ({ children }) => {
         console.log(error);
       }
   };
+
   const checkUser = async() => {
     const check = JSON.parse(localStorage.getItem("tokens"))
     const ussser = JSON.parse(localStorage.getItem("email"))
