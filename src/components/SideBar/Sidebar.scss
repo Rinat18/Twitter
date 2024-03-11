@@ -52,7 +52,7 @@
   border: none !important;
   width: 40% !important;
   left: 30% !important;
-  height: 30% !important;
+  height: 60% !important;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -68,6 +68,7 @@
   border-radius: 10px;
   color: white;
   height: 30px;
+  cursor: pointer;
 }
 .positon {
   position: fixed;
@@ -75,8 +76,7 @@
   align-items: center;
   justify-content: center;
   border-right: 1px solid gray;
-  width: 14%;
-  padding: 30px;
+  width: 12%;
 }
 
 .post2 {
@@ -130,4 +130,8 @@
     display: flex;
     justify-content: center;
   }
+}
+
+.inpChoose{
+  width: 80%;
 }

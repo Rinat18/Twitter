@@ -1,11 +1,10 @@
 import React from "react";
 import MainRoutes from "./routes/MainRoutes";
-import SideBar from "./components/SideBar/SideBar";
-import LeftBar from "./components/LeftBar/LeftBar";
-import Login from "./components/auth/Login";
+
 
 export default function App() {
   return (
+
     <div
       className="appMain"
       style={{
@@ -30,5 +29,10 @@ export default function App() {
     // <div>
     //   <Login />
     // </div>
+
+//     <>
+//       <MainRoutes />
+//     </>
+
   );
 }
