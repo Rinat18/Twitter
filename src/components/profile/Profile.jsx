@@ -1,13 +1,47 @@
 import { ArrowBack, CalendarMonth } from "@mui/icons-material";
 import { Avatar, colors } from "@mui/material";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./profile.scss";
 import avatarProf from "../../assets/Фото 3-4-24, 12.59 — копия.jpg";
+import { avatar, bio, email, link, name } from "../../helpers/const";
 import SideBar from "../../components/SideBar/SideBar";
 import LeftBar from "../../components/LeftBar/LeftBar";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../context/AuthContextProvider";
 
 const Profile = () => {
+  const { editUser, oneUser, getOneUser, users, getUsers } = useAuth();
+  if (oneUser) {
+    let time = oneUser.last_online;
+    console.log(time);
+  }
+  const [followersCount, setFollowersCount] = useState(0);
+  const [following, setFollowing] = useState(0);
+  const [time, setTime] = useState("");
+
+  useEffect(() => {
+    if (oneUser) {
+      setTime(oneUser.last_online);
+    }
+  }, [oneUser]);
+  useEffect(() => {
+    getOneUser();
+  }, []);
+
+  // function handleEditUser() {
+  //   if (!isBio.trim()) return;
+  //   if (!isLink.startsWith("https://")) return;
+  //   closeModal();
+  //   let formData = new FormData();
+  //   formData.append("avatar", fileInputRef.current.files[0]);
+  //   localStorage.setItem("avatar", JSON.stringify(profileImage));
+  //   formData.append("biography", isBio);
+  //   localStorage.setItem("bio", JSON.stringify(isBio));
+  //   formData.append("link", isLink);
+  //   localStorage.setItem("link", JSON.stringify(isLink));
+  //   editUser(formData);
+  // }
+
   const navigate = useNavigate();
   return (
     <>
@@ -24,7 +58,7 @@ const Profile = () => {
                   onClick={() => navigate("/")}
                 />
                 <div className="profileNavbar-name__post">
-                  <span>Aidar Bakytov</span>
+                  <span>{oneUser.username}</span>
                   <p style={{ textOverflow: "unset" }}>0 post</p>
                 </div>
               </div>
@@ -38,15 +72,15 @@ const Profile = () => {
                 <p style={{ color: "white" }}>Edit Profile</p>
               </div>
               <div className="profileTitle__about">
-                <h3>Aidar Bakytov</h3>
-                <p>@bakytv</p>
+                <h3>{oneUser.username}</h3>
+                <p>{oneUser.email}</p>
                 <div className="profileTitle-about__data">
                   <CalendarMonth sx={{ color: "gray" }} />
-                  <span>Joined February 2024</span>
+                  {oneUser && <span>last Online Day {time}</span>}
                 </div>
                 <div className="pofileTitle-about__followers">
-                  <p>0 Following</p>
-                  <p>0 Followers</p>
+                  <p>{following} Following</p>
+                  <p>{followersCount} Followers</p>
                 </div>
               </div>
             </div>

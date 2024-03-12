@@ -13,6 +13,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import ImageIcon from "@mui/icons-material/Image";
 import PlaceIcon from "@mui/icons-material/Place";
 import DateRangeIcon from "@mui/icons-material/DateRange";
+import SettingsIcon from "@mui/icons-material/Settings";
 import { NavLink, useNavigate } from "react-router-dom";
 import { usePorduct } from "../../context/PostContextProvider";
 import { useAuth } from "../../context/AuthContextProvider";
@@ -21,15 +22,22 @@ import { AddCircle, Close, Person, PlusOne } from "@mui/icons-material";
 export default function SideBar() {
   const naviagte = useNavigate();
   const [modalIsOpen, setModalIsOpen] = useState(false);
+
   const [open, setOpen] = useState(false);
   const [premiumModal, setPremiumModal] = useState(false);
+
+  const [isOpen, setIsOpen] = useState(false);
+//   const { oneUser, getOneUser } = useAuth();
+
   const inputRef = useRef(null);
   const [imageUrl, setImageUrl] = useState("");
   const fileInputRef = useRef(null);
   const { createPost } = usePorduct();
+
   const { user, checkAuth, checkUser, currentUser, curentUserName, LogOut } =
     useAuth();
   console.log(user);
+
   const handleFileChange = (event) => {
     const file = event.target.files[0];
     const imageUrl = URL.createObjectURL(file);
@@ -56,13 +64,12 @@ export default function SideBar() {
     }
   }, [modalIsOpen]);
 
+  const openModal = () => {
+    setIsOpen(true);
+  };
   useEffect(() => {
-    if (localStorage.getItem("tokens")) {
-      checkAuth();
-      checkUser();
-    }
+    getOneUser();
   }, []);
-
   // ! ADD POST
   const [title, setTitle] = useState("");
   const [category, setCategory] = useState(0);
@@ -234,6 +241,25 @@ export default function SideBar() {
               </span>
             </div>
           </NavLink>
+          <NavLink
+            to={"/settings"}
+            style={{ textDecoration: "none", color: "white" }}
+          >
+            <div>
+              <SettingsIcon
+                sx={{ color: "white", width: "40px", height: "40px" }}
+              />
+              <span
+                style={{
+                  paddingTop: "5px",
+                  fontSize: "20px",
+                  marginLeft: "10px",
+                }}
+              >
+                Settings
+              </span>
+            </div>
+          </NavLink>
           <button onClick={() => setModalIsOpen(true)} className="post">
             Post
           </button>
@@ -340,7 +366,11 @@ export default function SideBar() {
             </div>
           )}
         </div>
+
         <div onClick={openModal} className="account">
+
+//         <div className="account" onClick={openModal}>
+
           <div style={{ display: "flex" }}>
             <Avatar
               sx={{ border: "2px solid green" }}
@@ -354,6 +384,7 @@ export default function SideBar() {
                 color: "white",
               }}
             >
+
               {currentUser ? (
                 <div className="acc_email">{currentUser}</div>
               ) : (
@@ -363,7 +394,49 @@ export default function SideBar() {
               )}
 
               <div className="acc_name">{curentUserName}</div>
+
+//               <div className="acc_name">{oneUser.username}</div>
+//               <div className="acc_email">{oneUser.email}</div>
+
             </div>
+            {isOpen && (
+              <div className="hover-card-parent">
+                <div className="hover-card">
+                  <div tabIndex="0" className="overlay"></div>
+                  <div role="group" tabIndex="0" className="content">
+                    <div>
+                      <div className="hover-card-inner">
+                        <svg
+                          viewBox="0 0 24 24"
+                          aria-hidden="true"
+                          className="icon"
+                        >
+                          <g>
+                            <path d="M22 17H2L12 6l10 11z"></path>
+                          </g>
+                        </svg>
+                        <div className="hover-card-links">
+                          <a
+                            href="/i/flow/login"
+                            role="menuitem"
+                            className="hover-card-link"
+                          >
+                            Add an existing account
+                          </a>
+                          <a
+                            href="/logout"
+                            role="menuitem"
+                            className="hover-card-link"
+                          >
+                            Log out @Kaldarow
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
           <div className="adap" style={{ display: "flex" }}>
             <MoreHorizIcon

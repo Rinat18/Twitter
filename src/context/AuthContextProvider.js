@@ -5,38 +5,41 @@ import React, {
   useReducer,
   useState,
 } from "react";
-import { ACTION, API } from "../helpers/const";
+
+import { ACTION, API, getConfig } from "../helpers/const";
+
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 const authContext = createContext();
 export const useAuth = () => useContext(authContext);
 
 const AuthContextProvider = ({ children }) => {
-  const INIT_STATE = {
-    user: {},
-    existUser: {},
-  };
+  const INIT_STATE = { users: [], oneUser: {} };
   const reducer = (state = INIT_STATE, action) => {
     switch (action.type) {
-      case ACTION.SUCCESS_REGISTER:
-        return { ...state, user: action.payload };
-      case ACTION.GET_ERROR_REGISTRATION:
-        return { ...state, existUser: action.payload };
+      case ACTION.GET_USERS:
+        return { ...state, users: action.payload };
+      case ACTION.GET_ONE_USER:
+        return { ...state, oneUser: action.payload };
+      default:
+        return state;
     }
   };
   const [state, dispatch] = useReducer(reducer, INIT_STATE);
-  const [currentUser, setCurrentUser] = useState("");
-  const [curentUserName, setCurentUserName] = useState("");
+
+
+  const [error, setError] = useState(false);
+
   const navigate = useNavigate();
 
   // !Registration
   const registrate = async (formaData) => {
     try {
-      const res = await axios.post(`${API}/account/register/`, formaData);
-      dispatch({
-        type: ACTION.SUCCESS_REGISTER,
-        payload: res.data,
-      });
+
+      const { data } = await axios.post(`${API}/account/register/`, formaData);
+      localStorage.setItem("username", JSON.stringify(data));
+      alert("вам на почту отправили код для аквации!");
+
     } catch (error) {
       console.log(error);
       dispatch({
@@ -46,13 +49,13 @@ const AuthContextProvider = ({ children }) => {
     }
   };
   // ! activate Account
-  const activateAccount = async (formaData, name) => {
+
+  const activateAccount = async (formaData) => {
     try {
       const { data } = await axios.post(`${API}/account/activate/`, formaData);
-      localStorage.setItem("name", JSON.stringify(name));
-      console.log(data);
+      alert("Ваш аккаунт успешно активирован можете войти в аккаунт!");
+
     } catch (error) {
-      console.log(error.response.data.email[0]);
       dispatch({
         type: ACTION.GET_ERROR_REGISTRATION,
         payload: error.response.data,
@@ -61,19 +64,16 @@ const AuthContextProvider = ({ children }) => {
   };
 
   //   ! Login
-  const Login = async (formaData, email, name) => {
+  const Login = async (formaData, email) => {
     try {
       const { data } = await axios.post(`${API}/account/login/`, formaData);
+
+      window.location.reload();
       localStorage.setItem("tokens", JSON.stringify(data));
       localStorage.setItem("email", JSON.stringify(email));
-      localStorage.setItem("name", JSON.stringify(name));
-      setCurentUserName(name);
-      setCurrentUser(email);
       navigate("/");
-      dispatch({
-        type: ACTION.SUCCESS_REGISTER,
-        payload: email,
-      });
+      console.log(data);
+
     } catch (error) {
       console.log(error.response.data);
       dispatch({
@@ -81,11 +81,29 @@ const AuthContextProvider = ({ children }) => {
         payload: error.response.data,
       });
     } finally {
-      // setLoader(false);
+
     }
   };
 
-  //! checkAuth
+  //! RESET PASSWORD
+
+  async function handleResetPassword() {
+    try {
+      const tokens = JSON.parse(localStorage.getItem("tokens"));
+      if (!tokens || !tokens.access) {
+        throw new Error("No access token available");
+      }
+      const config = {
+        headers: { Authorization: `Bearer ${tokens.access}` },
+      };
+      await axios.post(`${API}/account/reset_password/`, {}, config);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  //! check Auth
+
   const checkAuth = async () => {
     try {
       const tokens = JSON.parse(localStorage.getItem("tokens"));
@@ -96,18 +114,20 @@ const AuthContextProvider = ({ children }) => {
         "tokens",
         JSON.stringify({ access: data, refresh: tokens.refresh })
       );
-      const email = JSON.parse(localStorage.getItem("email"));
-      const name = JSON.parse(localStorage.getItem("name"));
-      setCurrentUser(email);
-      setCurentUserName(name);
+
+
     } catch (error) {
       console.log(error);
     }
   };
+
+
+  // ! check USER
+
   const checkUser = async () => {
     const check = JSON.parse(localStorage.getItem("tokens"));
-    const ussser = JSON.parse(localStorage.getItem("email"));
-    // const name = JSON.parse(localStorage.getItem("name"));
+    const ussser = JSON.parse(localStorage.getItem("userRegistration"));
+
     if (check) {
       dispatch({
         type: ACTION.SUCCESS_REGISTER,
@@ -118,34 +138,153 @@ const AuthContextProvider = ({ children }) => {
   //   ! Logout
   const LogOut = async () => {
     try {
-      // await axios.post(`${API}/account/logout/`)
+
+      const tokens = JSON.parse(localStorage.getItem("tokens"));
+      if (!tokens || !tokens.access) {
+        throw new Error("No access token available");
+      }
+      const config = {
+        headers: { Authorization: `Bearer ${tokens.access}` },
+      };
+      const configData = {
+        refresh: tokens.refresh,
+      };
+      await axios.post(`${API}/account/logout/`, configData, config);
       localStorage.removeItem("tokens");
       localStorage.removeItem("email");
-      setCurrentUser(null);
+      localStorage.removeItem("avatar");
+      localStorage.removeItem("link");
+      localStorage.removeItem("bio");
+      localStorage.removeItem("username");
+      window.location.reload();
+      navigate("/login");
+
     } catch (error) {
       console.log(error);
     }
   };
 
-  // LogOut()
-  // ! GET USER
 
-  const getUser = async () => {
+  // ! GET USERS
+  async function getUsers() {
     try {
-    } catch {}
-  };
+      let { data } = await axios(`${API}/account/users/`, getConfig());
+      dispatch({ type: ACTION.GET_USERS, payload: data });
+      console.log(data);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  // ! GET CURRENT USER
+  async function getOneUser() {
+    try {
+      const id = JSON.parse(localStorage.getItem("username"));
+      const { data } = await axios(
+        `${API}/account/user_full/${id.id}/`,
+        getConfig()
+      );
+      console.log(data);
+      dispatch({ type: ACTION.GET_ONE_USER, payload: data });
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  // ! EDIT USER
+  async function editUser(formData) {
+    try {
+      let res = await axios.put(
+        `${API}/account/profile_update/`,
+        formData,
+        getConfig()
+      );
+      console.log(res);
+      window.location.reload();
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  // ! SET PREMIUM
+  async function addVerified() {
+    try {
+      const res = await axios.post(`${API}/account/user_vip/`, getConfig());
+      console.log(res);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  // ! GET SUBSCRIBES
+
+  async function getSubscribers() {
+    try {
+      let res = await axios(`${API}/posts/subscriptions/`, getConfig());
+      console.log(res);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  //! TO SUBSCRIBE
+
+  async function toSubscribe(id) {
+    try {
+      let res = await axios.post(
+        `${API}/posts//subscriptions/${id}/`,
+        getConfig()
+      );
+      console.log(res);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  // ! DELETE USER
+
+  async function deleteUser() {
+    try {
+      const res = await axios.delete(
+        `${API}/account/delete_user/`,
+        getConfig()
+      );
+      window.location.reload();
+      navigate("/login");
+      localStorage.removeItem("tokens");
+      localStorage.removeItem("email");
+      localStorage.removeItem("username");
+      localStorage.removeItem("avatar");
+      localStorage.removeItem("bio");
+      localStorage.removeItem("link");
+      console.log(res);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
 
   const values = {
     registrate,
     existUser: state.existUser,
     activateAccount,
-    user: state.user,
+    users: state.users,
+    oneUser: state.oneUser,
     Login,
     LogOut,
     checkAuth,
-    currentUser,
     checkUser,
-    curentUserName,
+
+    deleteUser,
+    toSubscribe,
+    getSubscribers,
+    addVerified,
+    editUser,
+    getOneUser,
+    getUsers,
+    LogOut,
+    handleResetPassword,
+
   };
   return <authContext.Provider value={values}>{children}</authContext.Provider>;
 };

@@ -5,6 +5,7 @@ import LeftBar from "./components/LeftBar/LeftBar";
 
 export default function App() {
   return (
+
     // <div
     //   className="appMain"
     //   style={{
@@ -33,5 +34,6 @@ export default function App() {
     <>
       <MainRoutes />
     </>
+
   );
 }

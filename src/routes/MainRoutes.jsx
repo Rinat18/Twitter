@@ -8,11 +8,13 @@ import Explore from "../components/explore/Explore";
 import Notifications from "../components/notifications/Notifications";
 import Message from "../components/message/Message";
 import { useAuth } from "../context/AuthContextProvider";
+
 import Favorites from "../components/favorites/Favorites";
 
+import Settings from "../components/settings/Settings";
+
+
 export default function MainRoutes() {
-  const { user } = useAuth();
-  console.log(user);
   const PUBLIC_ROUTES = [
     {
       path: "/",
@@ -38,6 +40,7 @@ export default function MainRoutes() {
       path: "/message",
       element: <Message />,
     },
+
     {
       path: "/favorites",
       element: <Favorites />,
@@ -45,20 +48,21 @@ export default function MainRoutes() {
   ];
 
   const NOT_ROUTES = [
+
     {
-      path: "/",
+      path: "/login",
       element: <Login />,
+    },
+    {
+      path: "/settings",
+      element: <Settings />,
     },
   ];
   return (
     <Routes>
-      {user.length > 1
-        ? PUBLIC_ROUTES.map((route) => (
-            <Route key={route.path} path={route.path} element={route.element} />
-          ))
-        : NOT_ROUTES.map((route) => (
-            <Route key={route.path} path={route.path} element={route.element} />
-          ))}
+      {PUBLIC_ROUTES.map((route) => (
+        <Route key={route.path} path={route.path} element={route.element} />
+      ))}
     </Routes>
   );
 }
