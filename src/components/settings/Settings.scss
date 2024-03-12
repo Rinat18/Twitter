@@ -150,3 +150,86 @@
     }
   }
 }
+// модалка
+.container {
+  height: 75vh;
+  width: 50%;
+  display: flex;
+
+  .form-group {
+    margin-bottom: 20px;
+    font-size: 20px;
+    width: 60%;
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      color: #71767b;
+    }
+
+    input {
+      width: 100%;
+      padding: 15px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      color: #e7e9ea;
+      background-color: transparent;
+
+      &:focus {
+        outline: none;
+        border-color: #1d9bf0;
+        box-shadow: 0 0 0 3px rgba(29, 155, 240, 0.3);
+      }
+    }
+
+    .forgot-password {
+      display: inline-block;
+      font-size: 14px;
+      color: #1d9bf0;
+      text-decoration: none;
+      margin-top: 5px;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .save-button {
+    background-color: #1d9bf0;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #0e81d9;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.modal-title {
+  display: flex;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.back-btn {
+  display: inline-block;
+  vertical-align: middle;
+  background: #000;
+  fill: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.header-pass {
+  display: inline-block;
+  margin-left: 10px;
+}
