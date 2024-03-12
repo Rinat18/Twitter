@@ -5,7 +5,9 @@ import React, {
   useReducer,
   useState,
 } from "react";
+
 import { ACTION, API, getConfig } from "../helpers/const";
+
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 const authContext = createContext();
@@ -24,15 +26,20 @@ const AuthContextProvider = ({ children }) => {
     }
   };
   const [state, dispatch] = useReducer(reducer, INIT_STATE);
+
+
   const [error, setError] = useState(false);
+
   const navigate = useNavigate();
 
   // !Registration
   const registrate = async (formaData) => {
     try {
+
       const { data } = await axios.post(`${API}/account/register/`, formaData);
       localStorage.setItem("username", JSON.stringify(data));
       alert("вам на почту отправили код для аквации!");
+
     } catch (error) {
       console.log(error);
       dispatch({
@@ -42,10 +49,12 @@ const AuthContextProvider = ({ children }) => {
     }
   };
   // ! activate Account
+
   const activateAccount = async (formaData) => {
     try {
       const { data } = await axios.post(`${API}/account/activate/`, formaData);
       alert("Ваш аккаунт успешно активирован можете войти в аккаунт!");
+
     } catch (error) {
       dispatch({
         type: ACTION.GET_ERROR_REGISTRATION,
@@ -58,11 +67,13 @@ const AuthContextProvider = ({ children }) => {
   const Login = async (formaData, email) => {
     try {
       const { data } = await axios.post(`${API}/account/login/`, formaData);
+
       window.location.reload();
       localStorage.setItem("tokens", JSON.stringify(data));
       localStorage.setItem("email", JSON.stringify(email));
       navigate("/");
       console.log(data);
+
     } catch (error) {
       console.log(error.response.data);
       dispatch({
@@ -70,6 +81,7 @@ const AuthContextProvider = ({ children }) => {
         payload: error.response.data,
       });
     } finally {
+
     }
   };
 
@@ -91,6 +103,7 @@ const AuthContextProvider = ({ children }) => {
   }
 
   //! check Auth
+
   const checkAuth = async () => {
     try {
       const tokens = JSON.parse(localStorage.getItem("tokens"));
@@ -101,16 +114,20 @@ const AuthContextProvider = ({ children }) => {
         "tokens",
         JSON.stringify({ access: data, refresh: tokens.refresh })
       );
+
+
     } catch (error) {
       console.log(error);
     }
   };
+
 
   // ! check USER
 
   const checkUser = async () => {
     const check = JSON.parse(localStorage.getItem("tokens"));
     const ussser = JSON.parse(localStorage.getItem("userRegistration"));
+
     if (check) {
       dispatch({
         type: ACTION.SUCCESS_REGISTER,
@@ -121,6 +138,7 @@ const AuthContextProvider = ({ children }) => {
   //   ! Logout
   const LogOut = async () => {
     try {
+
       const tokens = JSON.parse(localStorage.getItem("tokens"));
       if (!tokens || !tokens.access) {
         throw new Error("No access token available");
@@ -140,10 +158,12 @@ const AuthContextProvider = ({ children }) => {
       localStorage.removeItem("username");
       window.location.reload();
       navigate("/login");
+
     } catch (error) {
       console.log(error);
     }
   };
+
 
   // ! GET USERS
   async function getUsers() {
@@ -243,6 +263,7 @@ const AuthContextProvider = ({ children }) => {
     }
   }
 
+
   const values = {
     registrate,
     existUser: state.existUser,
@@ -250,8 +271,10 @@ const AuthContextProvider = ({ children }) => {
     users: state.users,
     oneUser: state.oneUser,
     Login,
+    LogOut,
     checkAuth,
     checkUser,
+
     deleteUser,
     toSubscribe,
     getSubscribers,
@@ -261,6 +284,7 @@ const AuthContextProvider = ({ children }) => {
     getUsers,
     LogOut,
     handleResetPassword,
+
   };
   return <authContext.Provider value={values}>{children}</authContext.Provider>;
 };
