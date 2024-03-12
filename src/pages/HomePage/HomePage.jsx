@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./HomePage.scss";
 import { Avatar, GlobalStyles } from "@mui/material";
 import {
@@ -16,8 +16,14 @@ import {
 } from "@mui/icons-material";
 import SideBar from "../../components/SideBar/SideBar";
 import LeftBar from "../../components/LeftBar/LeftBar";
+import Post from "../../components/post/Post";
+import { usePorduct } from "../../context/PostContextProvider";
 
 export default function HomePage() {
+  const { getPosts, posts } = usePorduct();
+  useEffect(() => {
+    getPosts();
+  }, []);
   return (
     <div className="HomePage">
       <div className="HomePage__container">
@@ -52,61 +58,9 @@ export default function HomePage() {
             </div>
           </div> */}
           <div className="postest">
-            <div className="usersPosts">
-              <div className="usersPosts__userInfo">
-                <div className="usersPosts__userInfo__inf">
-                  <Avatar className="avatar" />
-                  <p>Aidar Bakytov</p>
-                  <span>@bakytv_</span>
-                </div>
-                <MoreVert style={{ marginLeft: "40%" }} />
-              </div>
-              <div className="usersPosts__post"></div>
-              <div className="userPosts__containerComents">
-                <div className="usersPosts__comments">
-                  <MapsUgc />
-                  <span>1</span>
-                </div>
-                <div className="usersPosts__repost">
-                  <Loop />
-                  <span>1</span>
-                </div>
-                <div className="usersPosts__like">
-                  <Favorite />
-                  <span>20</span>
-                </div>
-                <div className="usersPosts__bookMarks">
-                  <TurnedIn />
-                </div>
-              </div>
-            </div>
-            <div className="usersPosts">
-              <div className="usersPosts__userInfo">
-                <Avatar className="avatar" />
-                <p>Aidar Bakytov</p>
-                <span>@bakytv_</span>
-                <MoreVert style={{ marginLeft: "40%" }} />
-              </div>
-              <div className="usersPosts__post"></div>
-              <div className="userPosts__containerComents">
-                <div className="usersPosts__comments">
-                  <MapsUgc />
-                  <span>1</span>
-                </div>
-                <div className="usersPosts__repost">
-                  <Loop />
-                  <span>1</span>
-                </div>
-                <div className="usersPosts__like">
-                  <Favorite />
-                  <span>20</span>
-                </div>
-                <div className="usersPosts__bookMarks">
-                  <TurnedIn />
-                  <Upload />
-                </div>
-              </div>
-            </div>
+            {posts.map((elem) => (
+              <Post elem={elem}/>
+            ))}
           </div>
         </main>
         <div className="leftBar">

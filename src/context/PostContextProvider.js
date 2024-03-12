@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useReducer } from "react";
+import React, { createContext, useContext, useEffect, useReducer } from "react";
 import { ACTION, API, getConfig } from "../helpers/const";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -36,6 +36,7 @@ const reducer = (state = INIT_STATE, action) => {
 const PostContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, INIT_STATE);
   const navigate = useNavigate();
+
 
  // ! GET CATEGORIES
   async function getCategories() {
@@ -79,9 +80,9 @@ const PostContextProvider = ({ children }) => {
   // ! GET POSTS
     async function getPosts() {
       try {
-        const res = await axios(`${API}/posts/posts/`, getConfig());
-        console.log(res);
-        dispatch({ type: ACTION.GET_POSTS, payload: res.data });
+        const {data} = await axios(`${API}/posts/posts/`, getConfig());
+        console.log(data);
+        dispatch({ type: ACTION.GET_POSTS, payload: data });
       } catch (error) {
         console.error(error);
       }

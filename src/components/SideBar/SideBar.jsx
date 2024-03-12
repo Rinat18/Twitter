@@ -14,23 +14,29 @@ import ImageIcon from "@mui/icons-material/Image";
 import PlaceIcon from "@mui/icons-material/Place";
 import DateRangeIcon from "@mui/icons-material/DateRange";
 import { NavLink, useNavigate } from "react-router-dom";
-import { usePorduct } from "../../context/PostContextProvider";
 import { useAuth } from "../../context/AuthContextProvider";
 import { AddCircle, Person } from "@mui/icons-material";
+import { usePorduct } from "../../context/PostContextProvider";
+import { avatar, name } from "../../helpers/const";
+import TagIcon from "@mui/icons-material/Tag";
 
 export default function SideBar() {
-  const naviagte = useNavigate();
+  //! USE POST
+  const { categories, getCategories, addPost, getPosts, posts } = usePorduct();
+  // ! STATE
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const { oneUser, getOneUser } = useAuth();
+
+  const [description, setDescription] = useState("");
+  const [image, setImage] = useState(null);
+  const [hashtag, setHashtag] = useState("");
+  const [showCategories, setShowCategories] = useState(false);
+  const [selectedImage, setSelectedImage] = useState(null);
+
+  // ! HOOKS
+  const navigate = useNavigate();
   const inputRef = useRef(null);
-  const [imageUrl, setImageUrl] = useState("");
   const fileInputRef = useRef(null);
-  const { createPost } = usePorduct();
-  const handleFileChange = (event) => {
-    const file = event.target.files[0];
-    const imageUrl = URL.createObjectURL(file);
-    setImageUrl(imageUrl);
-  };
   useEffect(() => {
     if (modalIsOpen && inputRef.current) {
       inputRef.current.focus();
@@ -39,20 +45,45 @@ export default function SideBar() {
   useEffect(() => {
     getOneUser();
   }, []);
+
+  // ! FUNCTIONS
+  const handleFileSelect = (e) => {
+    const file = e.target.files[0];
+    setImage(file);
+    if (file) {
+      const imageUrl = URL.createObjectURL(file);
+      setSelectedImage(imageUrl);
+    }
+  };
+
+  const handleHashClick = () => {
+    setShowCategories(!showCategories);
+  };
+
+  const handleCategoryClick = (category) => {
+    setHashtag(`#${category}`);
+    const input = document.querySelector(".modal-actions textarea");
+    if (input) {
+      input.value += ` #${category} `;
+    }
+  };
+
   // ! ADD POST
-  const [title, setTitle] = useState("");
-  const [category, setCategory] = useState(0);
-  const [subCategory, setSubCategory] = useState(0);
-  const [price, setPrice] = useState(0);
-  const [description, setDescription] = useState(imageUrl);
+
   const handleCLick = () => {
-    const newProduct = new FormData();
-    newProduct.append("title", title);
-    newProduct.append("category", category);
-    newProduct.append("subCategory", subCategory);
-    newProduct.append("price", price);
-    newProduct.append("description", description);
-    createPost(newProduct);
+    let formData = new FormData();
+    formData.append("creator", name.username);
+    formData.append("description", description);
+    formData.append("last_name", name.email);
+
+    const hashtagsArray = new Set([
+      ...description.split(" "),
+      ...hashtag.split(" "),
+    ]);
+    formData.append("description", Array.from(hashtagsArray).join(" "));
+    formData.append("image", image);
+    addPost(formData);
+    setModalIsOpen(false);
   };
 
   return (
@@ -80,7 +111,7 @@ export default function SideBar() {
           </NavLink>
           <div
             style={{ cursor: "pointer" }}
-            onClick={() => naviagte("/explore")}
+            onClick={() => navigate("/explore")}
           >
             <SearchIcon
               sx={{ color: "white", width: "40px", height: "40px" }}
@@ -97,7 +128,7 @@ export default function SideBar() {
           </div>
           <div
             style={{ cursor: "pointer" }}
-            onClick={() => naviagte("/notifications")}
+            onClick={() => navigate("/notifications")}
           >
             <NotificationsIcon
               sx={{ color: "white", width: "40px", height: "40px" }}
@@ -114,7 +145,7 @@ export default function SideBar() {
           </div>
           <div
             style={{ cursor: "pointer" }}
-            onClick={() => naviagte("/message")}
+            onClick={() => navigate("/message")}
           >
             <MailOutlineIcon
               sx={{ color: "white", width: "40px", height: "40px" }}
@@ -189,16 +220,13 @@ export default function SideBar() {
                 }}
               >
                 <div style={{ width: "10%" }}>
-                  <Avatar
-                    sx={{ border: "2px solid green" }}
-                    src="/static/images/avatar/2.jpg"
-                  />
+                  <Avatar src={avatar} />
                 </div>
                 <div style={{ width: "90%" }}>
                   <input
                     placeholder="What is happening?"
                     ref={inputRef}
-                    onChange={(e) => setTitle(e.target.value)}
+                    onChange={(e) => setDescription(e.target.value)}
                     type="text"
                     style={{
                       width: "100%",
@@ -215,11 +243,11 @@ export default function SideBar() {
                     cols="30"
                     rows="10"
                   />
-                  {imageUrl && (
+                  {selectedImage && (
                     <div>
                       <img
                         className="inpChoose"
-                        src={imageUrl}
+                        src={selectedImage}
                         alt="Uploaded"
                       />
                     </div>
@@ -236,11 +264,12 @@ export default function SideBar() {
               >
                 <div>
                   <input
+                    ref={fileInputRef}
                     type="file"
                     accept="image/*"
                     style={{ display: "none" }}
-                    ref={fileInputRef}
-                    onChange={handleFileChange}
+                    onChange={handleFileSelect}
+                    onClick={(e) => e.stopPropagation()}
                   />
                   <ImageIcon
                     sx={{ color: "#1d9cf0", cursor: "pointer" }}
@@ -248,6 +277,10 @@ export default function SideBar() {
                   />
                   <PlaceIcon sx={{ color: "#1d9cf0" }} />
                   <DateRangeIcon sx={{ color: "#1d9cf0" }} />
+                  <TagIcon
+                    sx={{ color: "#1d9cf0" }}
+                    onClick={handleHashClick}
+                  />
                 </div>
                 <div>
                   <button onClick={handleCLick} className="buttonPost">
