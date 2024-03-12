@@ -21,12 +21,11 @@ import { AddCircle, Person } from "@mui/icons-material";
 export default function SideBar() {
   const naviagte = useNavigate();
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const { oneUser, getOneUser } = useAuth();
   const inputRef = useRef(null);
   const [imageUrl, setImageUrl] = useState("");
   const fileInputRef = useRef(null);
   const { createPost } = usePorduct();
-  const { user, checkAuth, checkUser } = useAuth();
-  console.log(user);
   const handleFileChange = (event) => {
     const file = event.target.files[0];
     const imageUrl = URL.createObjectURL(file);
@@ -37,14 +36,9 @@ export default function SideBar() {
       inputRef.current.focus();
     }
   }, [modalIsOpen]);
-
   useEffect(() => {
-    if (localStorage.getItem("tokens")) {
-      checkAuth();
-      checkUser();
-    }
+    getOneUser();
   }, []);
-
   // ! ADD POST
   const [title, setTitle] = useState("");
   const [category, setCategory] = useState(0);
@@ -278,8 +272,8 @@ export default function SideBar() {
                 color: "white",
               }}
             >
-              <div className="acc_name">Ринат</div>
-              <div className="acc_email">@Rinat1111</div>
+              <div className="acc_name">{oneUser.username}</div>
+              <div className="acc_email">{oneUser.email}</div>
             </div>
           </div>
           <div className="adap" style={{ display: "flex" }}>

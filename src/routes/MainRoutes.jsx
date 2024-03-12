@@ -10,8 +10,6 @@ import Message from "../components/message/Message";
 import { useAuth } from "../context/AuthContextProvider";
 
 export default function MainRoutes() {
-  const { user } = useAuth();
-  console.log(user);
   const PUBLIC_ROUTES = [
     {
       path: "/",
