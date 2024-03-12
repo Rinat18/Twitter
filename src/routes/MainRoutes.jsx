@@ -8,6 +8,7 @@ import Explore from "../components/explore/Explore";
 import Notifications from "../components/notifications/Notifications";
 import Message from "../components/message/Message";
 import { useAuth } from "../context/AuthContextProvider";
+import Favorites from "../components/favorites/Favorites";
 
 export default function MainRoutes() {
   const { user } = useAuth();
@@ -36,6 +37,10 @@ export default function MainRoutes() {
     {
       path: "/message",
       element: <Message />,
+    },
+    {
+      path: "/favorites",
+      element: <Favorites />,
     },
   ];
 

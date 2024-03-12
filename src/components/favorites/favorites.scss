@@ -1,0 +1,40 @@
+.favoritesContainer {
+  // .favoritesContainer__header
+  font-family: Noto Sans;
+
+  color: #fff;
+  width: 55.1%;
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    h3 {
+      font-size: 22px;
+    }
+    span {
+      font-size: 14px;
+      color: #ffffff6d;
+    }
+    .header__tegs {
+      padding: 8px 0 10px 20px;
+    }
+    svg {
+      margin-right: 20px;
+    }
+  }
+
+  // .favoritesContainer__favorite
+
+  &__favorite {
+  }
+}
+.Sidebar {
+}
+.leftBar {
+}
+
+.favorites {
+  width: 70%;
+  margin: 0 auto;
+  display: flex;
+}
