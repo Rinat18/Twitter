@@ -2,14 +2,13 @@
   color: #fff;
   width: 55.1%;
   font-family: Noto Sans;
-  &_container{
+  &_container {
     width: 95%;
   }
   h3 {
     padding: 20px 0 30px 20px;
     font-size: 23px;
     // border-bottom: 1px solid #71777b;
-
   }
   &__search {
     display: flex;
@@ -21,7 +20,7 @@
     padding-bottom: 20px;
     svg:first-child {
       position: absolute;
-      left: 64px;
+      left: 36px;
       top: 12px;
       color: gray;
     }
@@ -79,22 +78,26 @@
   }
 }
 
-.exploreComponent{
+.exploreComponent {
   width: 100%;
   display: flex;
   justify-content: center;
 }
-.explore_container{
+.explore_container {
   width: 70%;
   display: flex;
 }
 
-.Sidebar{
-  width: 17%;
+.Sidebar {
+
+//   width: 17%;
+
+  width: 181px;
+
   height: 100vh;
 }
 
-.leftBar{
+.leftBar {
   width: 28%;
   position: relative;
 }

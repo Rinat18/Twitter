@@ -1,5 +1,13 @@
-import React, { createContext, useContext, useEffect, useReducer, useState } from "react";
+import React, {
+  createContext,
+  useContext,
+  useEffect,
+  useReducer,
+  useState,
+} from "react";
+
 import { ACTION, API, getConfig } from "../helpers/const";
+
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 const authContext = createContext();
@@ -18,15 +26,20 @@ const AuthContextProvider = ({ children }) => {
     }
   };
   const [state, dispatch] = useReducer(reducer, INIT_STATE);
+
+
   const [error, setError] = useState(false);
+
   const navigate = useNavigate();
 
   // !Registration
   const registrate = async (formaData) => {
     try {
+
       const { data } = await axios.post(`${API}/account/register/`, formaData);
       localStorage.setItem("username", JSON.stringify(data));
-      alert("вам на почту отправили код для аквации!")
+      alert("вам на почту отправили код для аквации!");
+
     } catch (error) {
       console.log(error);
       dispatch({
@@ -36,10 +49,12 @@ const AuthContextProvider = ({ children }) => {
     }
   };
   // ! activate Account
+
   const activateAccount = async (formaData) => {
     try {
-      const {data} = await axios.post(`${API}/account/activate/`, formaData);
-      alert("Ваш аккаунт успешно активирован можете войти в аккаунт!")
+      const { data } = await axios.post(`${API}/account/activate/`, formaData);
+      alert("Ваш аккаунт успешно активирован можете войти в аккаунт!");
+
     } catch (error) {
       dispatch({
         type: ACTION.GET_ERROR_REGISTRATION,
@@ -52,18 +67,21 @@ const AuthContextProvider = ({ children }) => {
   const Login = async (formaData, email) => {
     try {
       const { data } = await axios.post(`${API}/account/login/`, formaData);
+
       window.location.reload();
       localStorage.setItem("tokens", JSON.stringify(data));
       localStorage.setItem("email", JSON.stringify(email));
       navigate("/");
       console.log(data);
+
     } catch (error) {
       console.log(error.response.data);
       dispatch({
         type: ACTION.GET_ERROR_REGISTRATION,
-        payload: error.response.data 
+        payload: error.response.data,
       });
-    }finally {
+    } finally {
+
     }
   };
 
@@ -85,35 +103,42 @@ const AuthContextProvider = ({ children }) => {
   }
 
   //! check Auth
+
   const checkAuth = async () => {
-      try {
-        const tokens = JSON.parse(localStorage.getItem("tokens"));
-        const { data } = await axios.post(`${API}/account/refresh/`, {
-          refresh: tokens.refresh,
-        });
-        localStorage.setItem(
-          "tokens",
-          JSON.stringify({ access: data, refresh: tokens.refresh })
-        );
-      } catch (error) {
-        console.log(error);
-      }
+    try {
+      const tokens = JSON.parse(localStorage.getItem("tokens"));
+      const { data } = await axios.post(`${API}/account/refresh/`, {
+        refresh: tokens.refresh,
+      });
+      localStorage.setItem(
+        "tokens",
+        JSON.stringify({ access: data, refresh: tokens.refresh })
+      );
+
+
+    } catch (error) {
+      console.log(error);
+    }
   };
 
+
   // ! check USER
-  const checkUser = async() => {
-    const check = JSON.parse(localStorage.getItem("tokens"))
-    const ussser = JSON.parse(localStorage.getItem("userRegistration"))
-    if(check){
+
+  const checkUser = async () => {
+    const check = JSON.parse(localStorage.getItem("tokens"));
+    const ussser = JSON.parse(localStorage.getItem("userRegistration"));
+
+    if (check) {
       dispatch({
         type: ACTION.SUCCESS_REGISTER,
-        payload: ussser,  
+        payload: ussser,
       });
     }
-  }
+  };
   //   ! Logout
   const LogOut = async () => {
-    try{
+    try {
+
       const tokens = JSON.parse(localStorage.getItem("tokens"));
       if (!tokens || !tokens.access) {
         throw new Error("No access token available");
@@ -133,11 +158,12 @@ const AuthContextProvider = ({ children }) => {
       localStorage.removeItem("username");
       window.location.reload();
       navigate("/login");
-    }catch (error){
+
+    } catch (error) {
       console.log(error);
     }
-    
-  }
+  };
+
 
   // ! GET USERS
   async function getUsers() {
@@ -153,8 +179,11 @@ const AuthContextProvider = ({ children }) => {
   // ! GET CURRENT USER
   async function getOneUser() {
     try {
-      const id = JSON.parse(localStorage.getItem("username"))
-      const { data } = await axios(`${API}/account/user_full/${id.id}/`, getConfig());
+      const id = JSON.parse(localStorage.getItem("username"));
+      const { data } = await axios(
+        `${API}/account/user_full/${id.id}/`,
+        getConfig()
+      );
       console.log(data);
       dispatch({ type: ACTION.GET_ONE_USER, payload: data });
     } catch (error) {
@@ -233,7 +262,7 @@ const AuthContextProvider = ({ children }) => {
       console.error(error);
     }
   }
-  
+
 
   const values = {
     registrate,
@@ -242,8 +271,10 @@ const AuthContextProvider = ({ children }) => {
     users: state.users,
     oneUser: state.oneUser,
     Login,
+    LogOut,
     checkAuth,
     checkUser,
+
     deleteUser,
     toSubscribe,
     getSubscribers,
@@ -253,6 +284,7 @@ const AuthContextProvider = ({ children }) => {
     getUsers,
     LogOut,
     handleResetPassword,
+
   };
   return <authContext.Provider value={values}>{children}</authContext.Provider>;
 };

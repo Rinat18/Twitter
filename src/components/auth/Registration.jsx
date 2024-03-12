@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { useAuth } from "../../context/AuthContextProvider";
 import "./Registration.scss";
+import { useNavigate } from "react-router-dom";
 
-const Registration = ({ setModalWindow, setModalWindow2 }) => {
+const Registration = (props) => {
+  console.log(props);
+  const navigate = useNavigate("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
@@ -21,6 +24,7 @@ const Registration = ({ setModalWindow, setModalWindow2 }) => {
     } else {
       const formData = new FormData();
       formData.append("email", email);
+      formData.append("username", userName);
       formData.append("password", password);
       formData.append("password_confirm", passwordConfirm);
       formData.append("username", userName);
@@ -37,10 +41,11 @@ const Registration = ({ setModalWindow, setModalWindow2 }) => {
     formData.append("username", userName);
 
     activateAccount(formData);
+    props.setModalWindow(true);
   };
   return (
     <div class="container">
-      <span className="close" onClick={() => setModalWindow2(false)}>
+      <span className="close" onClick={() => props.setModalWindow2(false)}>
         &times;
       </span>
 
@@ -71,13 +76,12 @@ const Registration = ({ setModalWindow, setModalWindow2 }) => {
           />
         </label>
 
-        <label>
+        <label className="last-label">
           <span>Введите код которую отправили вам на почту</span>
-          <input
-            type="text"
-            onChange={(e) => setActivateAcc(e.target.value)}
-          />{" "}
-          <span onClick={() => activate()}>Activate</span>
+          <input type="text" onChange={(e) => setActivateAcc(e.target.value)} />
+          <button className="activate-button" onClick={() => activate()}>
+            Activate Code
+          </button>
         </label>
       </div>
       <div class="buttons">
@@ -89,8 +93,8 @@ const Registration = ({ setModalWindow, setModalWindow2 }) => {
           <p
             className="p-links"
             onClick={() => {
-              setModalWindow(true);
-              setModalWindow2(false);
+              props.setModalWindow(true);
+              props.setModalWindow2(false);
             }}
           >
             Войти

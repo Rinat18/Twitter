@@ -9,6 +9,11 @@ import Notifications from "../components/notifications/Notifications";
 import Message from "../components/message/Message";
 import { useAuth } from "../context/AuthContextProvider";
 
+import Favorites from "../components/favorites/Favorites";
+
+import Settings from "../components/settings/Settings";
+
+
 export default function MainRoutes() {
   const PUBLIC_ROUTES = [
     {
@@ -35,9 +40,22 @@ export default function MainRoutes() {
       path: "/message",
       element: <Message />,
     },
+
+    {
+      path: "/favorites",
+      element: <Favorites />,
+    },
+  ];
+
+  const NOT_ROUTES = [
+
     {
       path: "/login",
       element: <Login />,
+    },
+    {
+      path: "/settings",
+      element: <Settings />,
     },
   ];
   return (

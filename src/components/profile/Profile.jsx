@@ -30,6 +30,11 @@ const Profile = () => {
     console.log(time);
   }
 
+  const [modalWindow, setModalWindow] = useState(false);
+  const [followersCount, setFollowersCount] = useState(0);
+  const [following, setFollowing] = useState(0);
+  const [time, setTime] = useState("");
+
   useEffect(() => {
     if (oneUser) {
       setTime(oneUser.last_online);
@@ -80,8 +85,58 @@ const Profile = () => {
             <div className="profileTitle">
               <div className="profileTitle__PhotoAvatar">
                 <Avatar src="/static/images/avatar/2.jpg" />
-                <p style={{ color: "white" }}>Edit Profile</p>
+                <p
+                  onClick={() => setModalWindow(true)}
+                  style={{ color: "white" }}
+                >
+                  Edit Profile
+                </p>
               </div>
+              {modalWindow && (
+                <div className="profile-edit-overlay">
+                  <div className="user-profile-form">
+                    <h2 className="form-header">Edit profile</h2>
+                    <div className="form-section">
+                      <div class="drop-container" id="dropContainer">
+                        <label for="fileInput"></label>
+                        <input
+                          type="file"
+                          id="fileInput"
+                          accept="image/*"
+                          multiple
+                        />
+                      </div>
+
+                      <label className="form-label">
+                        <span className="label-text">Name</span>
+                        <input type="text" className="form-input" />
+                      </label>
+                    </div>
+                    <div className="form-section">
+                      <label className="form-label">
+                        <span className="label-text">Bio</span>
+                        <textarea className="form-textarea"></textarea>
+                      </label>
+                    </div>
+                    <div className="form-section">
+                      <label className="form-label">
+                        <span className="label-text">Location</span>
+                        <input type="text" className="form-input" />
+                      </label>
+                    </div>
+                    <div className="form-section">
+                      <label className="form-label">
+                        <span className="label-text">Website</span>
+                        <input type="text" className="form-input" />
+                      </label>
+                    </div>
+                    <div className="form-actions">
+                      <button className="save-button">Save</button>
+                    </div>
+                  </div>
+                </div>
+              )}
+
               <div className="profileTitle__about">
                 <h3>{oneUser.username}</h3>
                 <p>{oneUser.email}</p>
