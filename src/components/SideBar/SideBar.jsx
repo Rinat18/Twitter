@@ -23,12 +23,11 @@ export default function SideBar() {
   const naviagte = useNavigate();
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const { oneUser, getOneUser } = useAuth();
   const inputRef = useRef(null);
   const [imageUrl, setImageUrl] = useState("");
   const fileInputRef = useRef(null);
   const { createPost } = usePorduct();
-  const { user, checkAuth, checkUser } = useAuth();
-  console.log(user);
   const handleFileChange = (event) => {
     const file = event.target.files[0];
     const imageUrl = URL.createObjectURL(file);
@@ -43,14 +42,9 @@ export default function SideBar() {
   const openModal = () => {
     setIsOpen(true);
   };
-
   useEffect(() => {
-    if (localStorage.getItem("tokens")) {
-      checkAuth();
-      checkUser();
-    }
+    getOneUser();
   }, []);
-
   // ! ADD POST
   const [title, setTitle] = useState("");
   const [category, setCategory] = useState(0);
@@ -171,6 +165,11 @@ export default function SideBar() {
                 Avatar
               </span>
             </div>
+          </NavLink>
+          <NavLink
+            to={"/settings"}
+            style={{ textDecoration: "none", color: "white" }}
+          >
             <div>
               <SettingsIcon
                 sx={{ color: "white", width: "40px", height: "40px" }}
@@ -284,14 +283,13 @@ export default function SideBar() {
             </div>
           </Modal>
         </div>
-        <div className="account">
+        <div className="account" onClick={openModal}>
           <div style={{ display: "flex" }}>
             <Avatar
               sx={{ border: "2px solid green" }}
               src="/static/images/avatar/2.jpg"
             />
             <div
-              onClick={openModal}
               className="acc_info"
               style={{
                 display: "flex",
@@ -299,8 +297,8 @@ export default function SideBar() {
                 color: "white",
               }}
             >
-              <div className="acc_name">Ринат</div>
-              <div className="acc_email">@Rinat1111</div>
+              <div className="acc_name">{oneUser.username}</div>
+              <div className="acc_email">{oneUser.email}</div>
             </div>
             {isOpen && (
               <div className="hover-card-parent">
