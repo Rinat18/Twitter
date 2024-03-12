@@ -8,13 +8,28 @@ import SideBar from "../../components/SideBar/SideBar";
 import LeftBar from "../../components/LeftBar/LeftBar";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContextProvider";
+import { usePorduct } from "../../context/PostContextProvider";
+import Post from "../post/Post";
 
 const Profile = () => {
+  // ! IMPORTS
   const { editUser, oneUser, getOneUser, users, getUsers } = useAuth();
+  const { getPosts, posts } = usePorduct();
+
+  // ! STATES
+  const [followersCount, setFollowersCount] = useState(0);
+  const [following, setFollowing] = useState(0);
+  const [time, setTime] = useState("");
+
+  // ! HOOKS
+  useEffect(() => {
+    getPosts();
+  }, []);
   if (oneUser) {
     let time = oneUser.last_online;
     console.log(time);
   }
+
   const [modalWindow, setModalWindow] = useState(false);
   const [followersCount, setFollowersCount] = useState(0);
   const [following, setFollowing] = useState(0);
@@ -157,6 +172,11 @@ const Profile = () => {
                 </div>
               </div>
             </div>
+            {posts
+              .filter((elem) => elem.creator.email === email)
+              .map((elem) => (
+                <Post elem={elem} />
+              ))}
             <div className="newsTemp">
               <h2>Who to Follow </h2>
               <div className="newsTemp__all">

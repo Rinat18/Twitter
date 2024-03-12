@@ -16,6 +16,7 @@ export const ACTION = {
   GET_MESSAGES: "GET_MESSAGES",
   TRANSLATE_COMMENTS: "TRANSLATE_COMMENTS",
 };
+
 export const getConfig = () => {
   const tokens = JSON.parse(localStorage.getItem("tokens"));
   const Authorization = `Bearer ${tokens.access}`;
