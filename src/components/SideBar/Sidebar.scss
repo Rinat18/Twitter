@@ -85,6 +85,59 @@
     display: none;
   }
 }
+.hover-card-parent {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+  .hover-card {
+    position: absolute;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    width: 200px;
+    z-index: 999;
+
+    .overlay {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-color: transparent;
+    }
+
+    .content {
+      position: relative;
+      padding: 8px;
+    }
+
+    .hover-card-inner {
+      display: flex;
+      align-items: center;
+
+      .icon {
+        width: 24px;
+        height: 24px;
+        fill: #000;
+        margin-right: 8px;
+      }
+
+      .hover-card-links {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .hover-card-link {
+        color: #000;
+        text-decoration: none;
+        margin-bottom: 8px;
+      }
+    }
+  }
+}
+
 @media screen and (max-width: 1024px) {
   .sideBar {
     display: flex;
@@ -133,6 +186,6 @@
   }
 }
 
-.inpChoose{
+.inpChoose {
   width: 80%;
 }

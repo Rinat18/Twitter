@@ -3,7 +3,8 @@ import { useAuth } from "../../context/AuthContextProvider";
 import "./Registration.scss";
 import { useNavigate } from "react-router-dom";
 
-const Registration = ({ setModalWindow, setModalWindow2 }) => {
+const Registration = (props) => {
+  console.log(props);
   const navigate = useNavigate("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -40,11 +41,11 @@ const Registration = ({ setModalWindow, setModalWindow2 }) => {
     formData.append("username", userName);
 
     activateAccount(formData);
-    setModalWindow(true);
+    props.setModalWindow(true);
   };
   return (
     <div class="container">
-      <span className="close" onClick={() => setModalWindow2(false)}>
+      <span className="close" onClick={() => props.setModalWindow2(false)}>
         &times;
       </span>
 
@@ -92,8 +93,8 @@ const Registration = ({ setModalWindow, setModalWindow2 }) => {
           <p
             className="p-links"
             onClick={() => {
-              setModalWindow(true);
-              setModalWindow2(false);
+              props.setModalWindow(true);
+              props.setModalWindow2(false);
             }}
           >
             Войти
