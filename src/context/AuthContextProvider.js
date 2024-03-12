@@ -38,6 +38,7 @@ const AuthContextProvider = ({ children }) => {
   // ! activate Account
   const activateAccount = async (formaData) => {
     try {
+
       const {data} = await axios.post(`${API}/account/activate/`, formaData);
       alert("Ваш аккаунт успешно активирован можете войти в аккаунт!")
     } catch (error) {
@@ -61,7 +62,7 @@ const AuthContextProvider = ({ children }) => {
       console.log(error.response.data);
       dispatch({
         type: ACTION.GET_ERROR_REGISTRATION,
-        payload: error.response.data 
+        payload: error.response.data,
       });
     }finally {
     }
@@ -101,18 +102,20 @@ const AuthContextProvider = ({ children }) => {
   };
 
   // ! check USER
+
   const checkUser = async() => {
     const check = JSON.parse(localStorage.getItem("tokens"))
     const ussser = JSON.parse(localStorage.getItem("userRegistration"))
     if(check){
       dispatch({
         type: ACTION.SUCCESS_REGISTER,
-        payload: ussser,  
+        payload: ussser,
       });
     }
-  }
+  };
   //   ! Logout
   const LogOut = async () => {
+
     try{
       const tokens = JSON.parse(localStorage.getItem("tokens"));
       if (!tokens || !tokens.access) {
@@ -136,6 +139,7 @@ const AuthContextProvider = ({ children }) => {
     }catch (error){
       console.log(error);
     }
+
     
   }
 

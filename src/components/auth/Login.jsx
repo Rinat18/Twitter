@@ -150,6 +150,110 @@ const Login = () => {
             >
               Условия предоставления услуг
             </a>
+            <a
+              href="https://twitter.com/ru/privacy"
+              rel="noopener noreferrer nofollow"
+              target="_blank"
+              class="footer-link"
+            >
+              Политика конфиденциальности X
+            </a>
+            <a
+              href="https://help.twitter.com/ru/rules-and-policies/x-cookies"
+              rel="noopener noreferrer nofollow"
+              target="_blank"
+              class="footer-link"
+            >
+              Политика в отношении файлов cookie
+            </a>
+            <a
+              href="https://help.twitter.com/ru/resources/accessibility"
+              rel="noopener noreferrer nofollow"
+              target="_blank"
+              class="footer-link"
+            >
+              Специальные возможности
+            </a>
+            <a
+              href="https://help.twitter.com/ru/resources/accessibility"
+              rel="noopener noreferrer nofollow"
+              target="_blank"
+              class="footer-link"
+            >
+              Информация о рекламе
+            </a>
+            <a
+              href="https://blog.twitter.com/"
+              rel="noopener noreferrer nofollow"
+              target="_blank"
+              class="footer-link"
+            >
+              Блог
+            </a>
+            <a
+              href="https://status.twitterstat.us/"
+              rel="noopener noreferrer nofollow"
+              target="_blank"
+              class="footer-link"
+            >
+              Статус
+            </a>
+            <a
+              href="https://careers.twitter.com/en"
+              rel="noopener noreferrer nofollow"
+              target="_blank"
+              class="footer-link"
+            >
+              Работа
+            </a>
+            <a
+              href="https://about.twitter.com/en/who-we-are/brand-toolkit"
+              rel="noopener noreferrer nofollow"
+              target="_blank"
+              class="footer-link"
+            >
+              Ресурсы бренда
+            </a>
+            <a
+              href="https://business.x.com/en/advertising.html?ref=gl-tw-tw-twitter-advertise"
+              rel="noopener noreferrer nofollow"
+              target="_blank"
+              class="footer-link"
+            >
+              Реклама
+            </a>
+            <a
+              href="https://business.x.com/en/advertising.html?ref=gl-tw-tw-twitter-advertise"
+              rel="noopener noreferrer nofollow"
+              target="_blank"
+              class="footer-link"
+            >
+              Маркетинг
+            </a>
+            <a
+              href="https://business.twitter.com/?ref=web-twc-ao-gbl-twitterforbusiness&utm_source=twc&utm_medium=web&utm_campaign=ao&utm_content=twitterforbusiness"
+              rel="noopener noreferrer nofollow"
+              target="_blank"
+              class="footer-link"
+            >
+              Х для бизнеса
+            </a>
+            <a
+              href="https://developer.twitter.com/ent"
+              rel="noopener noreferrer nofollow"
+              target="_blank"
+              class="footer-link"
+            >
+              Разработчикам
+            </a>
+            <a
+              href="https://twitter.com/settings/account/personalization"
+              rel="noopener noreferrer nofollow"
+              target="_blank"
+              class="footer-link"
+            >
+              Настройки
+            </a>
             <span class="copyright">© 2024 X Corp.</span>
           </nav>
         </div>
