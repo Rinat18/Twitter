@@ -105,7 +105,7 @@ const LoginModal = ({ setModalWindow, setModalWindow2 }) => {
             className="p-links"
             onClick={() => {
               setModalWindow(false);
-              setModalWindow2(true);
+              // setModalWindow2(true);
             }}
           >
             Зарегистрируйтесь

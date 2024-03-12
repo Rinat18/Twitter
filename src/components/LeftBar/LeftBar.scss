@@ -7,14 +7,14 @@
   color: #fff;
   font-family: Noto Sans;
   position: inherit;
-  width: 20%;
+  width: 24%;
   display: flex;
   justify-content: center;
   position: fixed;
   border-left: 1px solid #71777b;
   height: 100vh;
   // margin-left: 50px;
-  &__container{
+  &__container {
     width: 90%;
   }
   &__input {
@@ -37,8 +37,7 @@
       border-radius: 40px;
       font-size: 20px;
       position: relative;
-        padding-left: 40px;
-      
+      padding-left: 40px;
     }
   }
   // .rightBar__subscribePremium
@@ -100,7 +99,6 @@
       cursor: pointer;
     }
   }
- 
 }
 .rightBar-recToFollow {
   // .rightBar-recToFollow__users
@@ -128,7 +126,6 @@
       color: black;
     }
   }
-
 }
 .rightBar-recToFollow-users {
   // .rightBar-recToFollow-users__nickname
@@ -158,12 +155,13 @@
   color: #e7e9ea;
   margin-bottom: 20px;
   border-radius: 25px;
+  width: 100%;
 }
 
 .trending-header {
   font-size: 21px;
   margin-bottom: 10px;
-  padding: 15px 0  0 15px;
+  padding: 15px 0 0 15px;
 }
 
 .trending-content {
@@ -176,7 +174,7 @@
 .trending-item {
   display: flex;
   align-items: center;
-  width: 90%;
+  width: 100%;
   justify-content: space-between;
   transition: background-color 0.3s ease;
 }
@@ -206,6 +204,7 @@
 .trending-actions {
   display: flex;
   align-items: center;
+  padding-right: 20px;
 }
 
 .trending-more-button {
@@ -247,6 +246,58 @@
 .show-more-button:hover {
   text-decoration: none;
 }
+.hover-card-parent {
+  position: relative;
+  bottom: 87.2625px;
+  left: 75px;
+
+  .hover-card {
+    position: absolute;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    width: 200px;
+    z-index: 999;
+
+    .overlay {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-color: transparent;
+    }
+
+    .content {
+      position: relative;
+      padding: 8px;
+    }
+
+    .hover-card-inner {
+      display: flex;
+      align-items: center;
+
+      .icon {
+        width: 24px;
+        height: 24px;
+        fill: #000;
+        margin-right: 8px;
+      }
+
+      .hover-card-links {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .hover-card-link {
+        color: #000;
+        text-decoration: none;
+        margin-bottom: 8px;
+      }
+    }
+  }
+}
+
 @media screen and (max-width: 768px) {
   .leftBar {
     display: none;

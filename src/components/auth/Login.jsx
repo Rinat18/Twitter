@@ -79,12 +79,6 @@ const Login = () => {
                 onClick={() => setModalWindow2(true)}
               >
                 <span class="button-content">Зарегистрироваться</span>
-                {modalWindow2 ? (
-                  <Registration
-                    setModalWindow2={setModalWindow2}
-                    setModalWindow={setModalWindow}
-                  />
-                ) : null}
               </div>
 
               <div className="poilitics">
@@ -106,6 +100,12 @@ const Login = () => {
 
             {modalWindow ? (
               <LoginModal
+                setModalWindow={setModalWindow}
+                setModalWindow2={setModalWindow2}
+              />
+            ) : null}
+            {modalWindow2 ? (
+              <Registration
                 setModalWindow={setModalWindow}
                 setModalWindow2={setModalWindow2}
               />
