@@ -13,7 +13,6 @@ import Favorites from "../components/favorites/Favorites";
 
 import Settings from "../components/settings/Settings";
 
-
 export default function MainRoutes() {
   const PUBLIC_ROUTES = [
     {
@@ -45,10 +44,6 @@ export default function MainRoutes() {
       path: "/favorites",
       element: <Favorites />,
     },
-  ];
-
-  const NOT_ROUTES = [
-
     {
       path: "/login",
       element: <Login />,
@@ -58,6 +53,8 @@ export default function MainRoutes() {
       element: <Settings />,
     },
   ];
+
+  const NOT_ROUTES = [];
   return (
     <Routes>
       {PUBLIC_ROUTES.map((route) => (
