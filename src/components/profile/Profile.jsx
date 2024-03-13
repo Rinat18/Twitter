@@ -1,6 +1,6 @@
 import { ArrowBack, CalendarMonth } from "@mui/icons-material";
 import { Avatar, colors } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./profile.scss";
 import avatarProf from "../../assets/Фото 3-4-24, 12.59 — копия.jpg";
 import { avatar, bio, email, link, name } from "../../helpers/const";
@@ -20,6 +20,12 @@ const Profile = () => {
   const [followersCount, setFollowersCount] = useState(0);
   const [following, setFollowing] = useState(0);
   const [time, setTime] = useState("");
+  const [modalWindow, setModalWindow] = useState(false);
+
+  const [isBio, setIsBio] = useState("");
+  const [isLink, setIsLink] = useState("");
+  const [profileImage, setProfileImage] = useState(null);
+  const fileInputRef = useRef(null);
 
   // ! HOOKS
   useEffect(() => {
@@ -30,11 +36,6 @@ const Profile = () => {
     console.log(time);
   }
 
-  const [modalWindow, setModalWindow] = useState(false);
-  const [followersCount, setFollowersCount] = useState(0);
-  const [following, setFollowing] = useState(0);
-  const [time, setTime] = useState("");
-
   useEffect(() => {
     if (oneUser) {
       setTime(oneUser.last_online);
@@ -44,19 +45,36 @@ const Profile = () => {
     getOneUser();
   }, []);
 
-  // function handleEditUser() {
-  //   if (!isBio.trim()) return;
-  //   if (!isLink.startsWith("https://")) return;
-  //   closeModal();
-  //   let formData = new FormData();
-  //   formData.append("avatar", fileInputRef.current.files[0]);
-  //   localStorage.setItem("avatar", JSON.stringify(profileImage));
-  //   formData.append("biography", isBio);
-  //   localStorage.setItem("bio", JSON.stringify(isBio));
-  //   formData.append("link", isLink);
-  //   localStorage.setItem("link", JSON.stringify(isLink));
-  //   editUser(formData);
-  // }
+  // ! FUNCTIONS
+
+  const handleChooseFile = () => {
+    fileInputRef.current.click();
+  };
+
+  function handleFileChange(e) {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        const fileData = reader.result;
+        setProfileImage(fileData);
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+
+  function handleEditUser() {
+    if (!isBio.trim()) return;
+    if (!isLink.startsWith("https://")) return;
+    let formData = new FormData();
+    formData.append("avatar", fileInputRef.current.files[0]);
+    localStorage.setItem("avatar", JSON.stringify(profileImage));
+    formData.append("biography", isBio);
+    localStorage.setItem("bio", JSON.stringify(isBio));
+    formData.append("link", isLink);
+    localStorage.setItem("link", JSON.stringify(isLink));
+    editUser(formData);
+  }
 
   const navigate = useNavigate();
   return (
@@ -104,34 +122,58 @@ const Profile = () => {
                           id="fileInput"
                           accept="image/*"
                           multiple
+                          ref={fileInputRef}
+                          onChange={handleFileChange}
                         />
                       </div>
 
                       <label className="form-label">
                         <span className="label-text">Name</span>
-                        <input type="text" className="form-input" />
+                        <input
+                          style={{ color: "#fff" }}
+                          type="text"
+                          className="form-input"
+                        />
                       </label>
                     </div>
                     <div className="form-section">
                       <label className="form-label">
                         <span className="label-text">Bio</span>
-                        <textarea className="form-textarea"></textarea>
+                        <textarea
+                          style={{ color: "#fff" }}
+                          className="form-textarea"
+                          placeholder="+ Добавить биографию"
+                          defaultValue={bio}
+                          onChange={(e) => setIsBio(e.target.value)}
+                        ></textarea>
                       </label>
                     </div>
-                    <div className="form-section">
+                    {/* <div className="form-section">
                       <label className="form-label">
                         <span className="label-text">Location</span>
                         <input type="text" className="form-input" />
                       </label>
-                    </div>
+                    </div> */}
                     <div className="form-section">
                       <label className="form-label">
                         <span className="label-text">Website</span>
-                        <input type="text" className="form-input" />
+                        <textarea
+                          className="form-input"
+                          style={{ height: "65px", color: "#fff" }}
+                          type="text"
+                          placeholder="+ Добавить ссылку"
+                          defaultValue={link}
+                          onChange={(e) => setIsLink(e.target.value)}
+                        />
                       </label>
                     </div>
                     <div className="form-actions">
-                      <button className="save-button">Save</button>
+                      <button
+                        className="save-button"
+                        onClick={() => handleEditUser()}
+                      >
+                        Save
+                      </button>
                     </div>
                   </div>
                 </div>

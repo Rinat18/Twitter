@@ -21,10 +21,11 @@ import { usePorduct } from "../../context/PostContextProvider";
 import { avatar, name } from "../../helpers/const";
 import TagIcon from "@mui/icons-material/Tag";
 
-
 export default function SideBar() {
   //! USE POST
   const { categories, getCategories, addPost, getPosts, posts } = usePorduct();
+  const { user, currentUser, curentUserName, LogOut } = useAuth();
+
   // ! STATE
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const { oneUser, getOneUser } = useAuth();
@@ -35,28 +36,19 @@ export default function SideBar() {
   const [showCategories, setShowCategories] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
 
-  // ! HOOKS
-  const navigate = useNavigate();
-
   const [open, setOpen] = useState(false);
   const [premiumModal, setPremiumModal] = useState(false);
 
   const [isOpen, setIsOpen] = useState(false);
 
+  // ! HOOKS
+  const navigate = useNavigate();
+
   const inputRef = useRef(null);
   const fileInputRef = useRef(null);
 
-  const { createPost } = usePorduct();
-
-  const { user, checkAuth, checkUser, currentUser, curentUserName, LogOut } =
-    useAuth();
   console.log(user);
 
-  const handleFileChange = (event) => {
-    const file = event.target.files[0];
-    const imageUrl = URL.createObjectURL(file);
-    setImageUrl(imageUrl);
-  };
   // ? logaoutModal
   const openModal = () => {
     setOpen(true);
@@ -78,7 +70,7 @@ export default function SideBar() {
     }
   }, [modalIsOpen]);
 
-  const openModal = () => {
+  const openModal2 = () => {
     setIsOpen(true);
   };
   useEffect(() => {
@@ -130,7 +122,7 @@ export default function SideBar() {
       <div className="sideBar">
         <XIcon sx={{ color: "white", marginTop: "20px" }} />
         <div className="sideBar_Links">
-          <div style={{ cursor: "pointer" }} onClick={() => naviagte("/")}>
+          <div style={{ cursor: "pointer" }} onClick={() => navigate("/")}>
             <HomeIcon sx={{ color: "white", width: "40px", height: "40px" }} />
             <span
               style={{
@@ -198,7 +190,7 @@ export default function SideBar() {
           </div>
           <div
             style={{ cursor: "pointer" }}
-            onClick={() => naviagte("/favorites")}
+            onClick={() => navigate("/favorites")}
           >
             <BookmarkBorderIcon
               sx={{ color: "white", width: "40px", height: "40px" }}
@@ -217,7 +209,7 @@ export default function SideBar() {
             <div className="modal-output">
               <div className="modal-content">
                 <div className="modal__close">
-                  <Close onClick={modalClose} />
+                  <CloseIcon onClick={modalClose} />
                 </div>
                 <div className="modalTitle">
                   <h3>Who are you?</h3>
@@ -398,20 +390,17 @@ export default function SideBar() {
               </div>
             </div>
           </Modal>
+        </div>
+
+        <div className="account" onClick={openModal}>
           {open && (
             <div className="custom-modal">
               <div className="modal2">
-                <Close onClick={closeModal} />
+                <CloseIcon onClick={closeModal} />
                 <p onClick={LogOut}>Logout</p>
               </div>
             </div>
           )}
-        </div>
-
-        <div onClick={openModal} className="account">
-
-//         <div className="account" onClick={openModal}>
-
           <div style={{ display: "flex" }}>
             <Avatar
               sx={{ border: "2px solid green" }}
@@ -425,20 +414,9 @@ export default function SideBar() {
                 color: "white",
               }}
             >
-
-              {currentUser ? (
-                <div className="acc_email">{currentUser}</div>
-              ) : (
-                <div>
-                  <span>guest</span>
-                </div>
-              )}
-
               <div className="acc_name">{curentUserName}</div>
-
-//               <div className="acc_name">{oneUser.username}</div>
-//               <div className="acc_email">{oneUser.email}</div>
-
+              <div className="acc_name">{oneUser.username}</div>
+              <div className="acc_email">{oneUser.email}</div>
             </div>
             {isOpen && (
               <div className="hover-card-parent">

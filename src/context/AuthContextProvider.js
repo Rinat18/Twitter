@@ -6,7 +6,7 @@ import React, {
   useState,
 } from "react";
 
-import { ACTION, API, getConfig } from "../helpers/const";
+import { ACTION, API, getConfig, name } from "../helpers/const";
 
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -87,16 +87,17 @@ const AuthContextProvider = ({ children }) => {
 
   //! RESET PASSWORD
 
-  async function handleResetPassword() {
+  async function handleResetPassword(newPassword) {
     try {
       const tokens = JSON.parse(localStorage.getItem("tokens"));
+      const id = name.id
       if (!tokens || !tokens.access) {
         throw new Error("No access token available");
       }
       const config = {
         headers: { Authorization: `Bearer ${tokens.access}` },
       };
-      await axios.post(`${API}/account/reset_password/`, {}, config);
+      await axios.post(`${API}/account/password_change/${id}`,  config());
     } catch (error) {
       console.error(error);
     }
